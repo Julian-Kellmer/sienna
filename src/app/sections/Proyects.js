@@ -4,24 +4,26 @@ import Image from 'next/image'
 import Link from 'next/link'
 import proyectos from '../mockdata/proyectos'
 
-const categorias = ['viviendas', 'casas', 'oficinas']
+const categorias = ['Casas', 'Turismo']
 
 const Proyects = () => {
   const [isSelected, setIsSelected] = useState('')
   return (
-    <section className=' lg:px-24 bg-white '>
-      <div className=' flex flex-col border-x-2 border-b-2 h-full border-black/25  '>
-        <div className='flex flex-1 '>
-          <div className='flex-6'></div>
-          <div className='flex-3 border-l border-black/25'></div>
-        </div>
-        <div className='flex-2 border-y  border-black/25 flex'>
-          <div className='justify-end flex flex-1 flex-col titulos h-full  px-8 py-8 gap-4'>
-            <h2 className='  text-black title font-bold tracking-tight  leading-none text-mobile-title md:text-web-title  max-w-2xl'>
-              Nuestros Proyectos
-            </h2>
+    <section className='  bg-white pb-16'>
+      <div className='flex flex-col  h-full '>
+        <div className='flex w-full  lg:px-24 border-t border-b border-black/25'>
+          <div className='flex w-full  '>
+            <div id='titulos' className=' md:flex-12  flex  h-full  px-8 py-24 gap-4'>
+              <h2 className='  text-black title font-bold tracking-tight  leading-none text-[3.5rem] md:text-web-title md:max-w-3xl md:px-32 lg:text-web-title'>
+                Algunos de nuestros ultimos modulos
+              </h2>
+            </div>
+            <div className=' flex-7'></div>
           </div>
-          {/* <div className='flex-1 categorys flex justify-end items-end p-8 lg:gap-16 gap-2'>
+        </div>
+        {/* <div className='flex-2 border-y  border-black/25 flex'>
+          
+          <div className='flex-1 categorys flex justify-end items-end p-8 lg:gap-16 gap-2'>
             {categorias.map((cat, index) => {
               return (
                 <div
@@ -36,14 +38,14 @@ const Proyects = () => {
                 </div>
               )
             })}
-          </div> */}
-        </div>
+          </div> 
+        </div> */}
         <div className='flex flex-9 gap-2 lg:flex-row flex-col  '>
           <div className=' main-proyect border-r border-dashed border-black/25 flex-1 flex justify-center items-center '>
             <div className='gap-8 p-12 w-full  h-full  flex-col flex justify-center items-start '>
               <div className='image-container relative w-full h-auto aspect-video'>
                 <Image
-                  src='/images/background.jpg'
+                  src='/casas/45SenL/1.png'
                   alt='Foto del proyecto principal'
                   fill
                   className='object-cover'
@@ -54,7 +56,7 @@ const Proyects = () => {
                   Ver Proyecto {`->`}
                 </Link>
                 <h3 className='text-[1.8rem] text-black font-bold tracking-tight  leading-none'>
-                  Modulo Bariloche
+                  45 S en L
                 </h3>
               </div>
             </div>
@@ -86,10 +88,10 @@ const Proyects = () => {
             ))}
           </div>
         </div>
-        <div className='flex-1  border-t border-black/25'>
+        <div className='flex-1 '>
           {proyectos.length > 5 &&
-            div(
-              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 border-t border-black/25 mt-4'>
+            (
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  border-black/25 mt-4'>
                 {proyectos.slice(5).map((proyecto) => (
                   <div
                     key={proyecto.id}
@@ -118,6 +120,7 @@ const Proyects = () => {
             )}
         </div>
       </div>
+      <div className='w-full h-[15vh]   mt-2  border-t border-dashed border-black/25'></div>
     </section>
   )
 }

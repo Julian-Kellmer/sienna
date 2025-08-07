@@ -7,8 +7,8 @@ import Image from 'next/image'
 const WhyUs = () => {
   gsap.registerPlugin(ScrollTrigger)
   const currentActiveIndexRef = useRef(0)
-   useEffect(() => {
-    console.log(info[0].icon)
+  useEffect(() => {
+    // console.log(info[0].icon)
     gsap.fromTo(
       '.title',
       { opacity: 0, x: -200 },
@@ -55,13 +55,13 @@ const WhyUs = () => {
 
         const textContainerPositionHeight =
           textContainer.getBoundingClientRect().height
-        const startPosition = textContainerPositionHeight
+        const startPosition = textContainerPositionHeight/2
         const targetPosition = -textContainerPositionHeight
-        const totalDistance = startPosition - targetPosition
+        const totalDistance = startPosition*3 - targetPosition
         const currentY = startPosition - progress * totalDistance
 
         gsap.set('.text-wrapper', {
-          y: currentY *1.8,
+          y: currentY * 1.8,
         })
 
         gsap.set('.image-wrapper', {
@@ -101,51 +101,31 @@ const WhyUs = () => {
     <section
       id='whyUs'
       className='whyUs h-screen relative bg-white overflow-hidden'>
-      <div className=' md:mx-24 mx-4 flex  border-x border-t border-black/25 h-full    '>
+      <div className=' md:mx-24  flex  border-x border-t border-black/25 h-full   justify-center  '>
         {/* aca va a estar el titulo y el carrusel con los contenidos */}
-        <div className='flex flex-col md:flex-4 h-full  border-r border-black/25'>
-          <div className='flex-2 flex titles   flex-col '>
-            <div className='flex-2 w-full ' />
-            <div className=' my-2 flex-3 title-container md:px-16 px-4 py-2 md:py-8 border-t border-b border-black/25 flex flex-col align-start gap-4 '>
-              <h2 className='title font-bold tracking-tight leading-none text-mobile-title sm:text-tablet-title lg:text-web-title text-[#222122]  max-w-2xl'>
-                Por qué elegirnos es siempre la mejor opción
-              </h2>
-              <p className='text-mobile-article sm:text-tablet-article lg:text-web-article max-w-4xl'>
-                En Sienna nos aseguramos de que tengas la mejor experiencia
-                desde el momento en que señas hasta que te entregamos tu
-                propiedad
-              </p>
-            </div>
-          </div>
-          <div className='flex-4   h-full relative border-t border-dashed border-black/25 overflow-hidden'>
-            <div className='  border-x border-y border-dashed border-black/25 absolute top-0 left-1/8 w-6/8  h-full '></div>
-            <div className='  text-wrapper absolute top-0 left-1/8 w-6/8 h-full gap-24  flex  flex-col c items-center justify-around -translate-y-[-100%]   '>
-              {info.slice(0, 5).map((items, index) => {
+        <div className='flex flex-col w-full md:flex-4 h-full   border-r border-black/25'>
+          <div className='flex-1   h-full relative border-t border-dashed border-black/25 overflow-hidden '>
+            <div className='  border-x border-y border-dashed border-black/25 absolute top-0 left-[3vw] md:left-1/8 md:w-6/8 w-[90vw] h-full '></div>
+            <div className='  text-wrapper md:absolute top-0 md:left-1/8 w-full md:w-6/8 h-full gap-48  flex  flex-col  items-center justify-around -translate-y-[-100%]   '>
+              {info.map((items, index) => {
                 return (
                   <div
                     key={index}
                     className='titlesElements  gap-6 transition-all duration-150 ease-out flex max-w-xl  '>
-                    <div className=' md:flex self-start  hidden'></div>
-                    <div className='  text-center  flex  flex-col justify-center items-center gap-2 '>
-                      <div className='flex align-center  gap-4 items-start content-center '>
-                        <div className='md:block hidden  mt-[10px]  '>
-                          <svg
-                            width='18'
-                            height='18'
-                            viewBox='0 0 28 24'
-                            fill='black'
-                            xmlns='http://www.w3.org/2000/svg'>
-                            <path
-                              d={items.icon}
-                              fill='#4C454A'
-                            />
-                          </svg>
+                    <div className=' flex self-start  '></div>
+                    <div className='  text-center  flex  flex-col justify-center items-center gap-4 '>
+                      <div className='flex align-center flex-col gap-2  items-center content-center '>
+                        <div className='  '>
+                          <img
+                            src={items.icon}
+                            alt={items.icon}
+                          />
                         </div>
-                        <h1 className='px-4 font-bold  leading-none sm:text-tablet-subtitle lg:text-web-subtitle text-mobile-subtitle'>
+                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2.5rem] text-[1.8rem] max-w-sm md:max-w-full  '>
                           {items.title}
-                        </h1>
+                        </h2>
                       </div>
-                      <p className='font-Gotham-light text-mobile-body sm:text-tablet-body lg:text-web-body px-6 sm:px-16 lg:px-8 '>
+                      <p className='font-Gotham-light text-mobile-subtitle sm:text-tablet-subtitle lg:text-web-subtitle px-6 sm:px-16 lg:px-8 '>
                         {items.subtitle}
                       </p>
                     </div>

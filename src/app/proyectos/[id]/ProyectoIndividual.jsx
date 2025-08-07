@@ -18,7 +18,7 @@ export default function ProyectoIndividual({ proyecto }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.info-box', {
+      gsap.from('.text-web-title', {
         scrollTrigger: {
           trigger: '.info-box',
           start: 'top 80%',
@@ -98,7 +98,7 @@ export default function ProyectoIndividual({ proyecto }) {
         </div>
       </div>
       <div>
-        <ImageCarousel />
+        <ImageCarousel images={proyecto.images}/>
       </div>
 
     </section>
