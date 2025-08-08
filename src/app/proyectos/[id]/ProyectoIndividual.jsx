@@ -37,9 +37,9 @@ export default function ProyectoIndividual({ proyecto }) {
     <section
       ref={containerRef}
       className='h-screen bg-white'>
-      <div className='flex h-full  '>
+      <div className='flex lg:flex-row flex-col h-full  '>
         {/* INFO LATERAL */}
-        <div className='flex-2 flex flex-col justify-between pl-12  '>
+        <div className='flex-2 flex flex-col justify-between lg:pl-12  '>
           {/* Título y ubicación */}
           <div className='flex flex-col h-full pl-16  justify-between '>
             <div className='pl-12 pt-12 border-l border-b flex flex-col justify-center'>
@@ -77,7 +77,7 @@ export default function ProyectoIndividual({ proyecto }) {
                 <h2 className='capitalize text-web-subtitle font-semibold text-primary mb-1'>
                   Descripción
                 </h2>
-                <p className='text-sm text-gray-600 leading-relaxed'>
+                <p className='text-sm text-gray-600 leading-relaxed p-4'>
                   {proyecto.descripcion}
                 </p>
               </div>

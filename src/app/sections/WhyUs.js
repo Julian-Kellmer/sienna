@@ -100,7 +100,7 @@ const WhyUs = () => {
       id='whyUs'
       className='whyUs h-screen relative bg-white '>
       <div className=' md:mx-24 mx-4 grid  border border-black/25  p-2 h-full grid-cols-6 grid-rows-8   '>
-        <div className=' bg-red-50 titles col-span-4 row-span-2 border border-dashed flex justify-start items-end  '>
+        <div className='  titles col-span-4 row-span-2 border border-dashed flex justify-start items-end  '>
           <div className='title-container px-16 py-8'>
             <h2 className='text-black title font-bold tracking-tight  leading-none text-mobile-body md:text-web-section p-4  max-w-xl'>
               Porque elegirnos es la mejor opción

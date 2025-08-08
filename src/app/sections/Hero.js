@@ -1,29 +1,59 @@
-import Image from 'next/image'
+'use client'
+
 import React from 'react'
-import Background from '../../../public/images/background.jpg'
 import Button from '../components/Button'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(useGSAP)
+
 const Hero = () => {
+  useGSAP(() => {
+    gsap.set('#video-frame', {
+      clipPath: 'polygon(4% 4%, 96% 4%, 96% 96%, 4% 96%)',
+    })
+    gsap.from('#video-frame', {
+      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      ease: 'power2.inOut',
+      scrollTrigger:{
+        trigger: '#video-frame', 
+        start: 'top top',
+        end: 'bottom center',
+        scrub: true,
+      }
+    })
+  })
+
   return (
-    <section className='  h-screen bg-red-300'>
-      <div
-        className='relative w-full h-full flex  flex-col items-center  pt-38 sm:pt-10 md:justify-center bg-cover bg-[center_55%] md:bg-[center_45%]  '
-        id='hero-container'
-        style={{
-          backgroundImage: `url(${Background.src})`,
-          // backgroundSize: 'cover',
-          // backgroundPosition: 'md:45% 55% md:45% 0% ',
-        }}>
+    <section className='h-screen relative overflow-hidden'>
+      {/* Video de fondo */}
+      <video
+        id='video-frame'
+        className='absolute top-0 left-0 w-full h-full object-cover z-[-1]'
+        autoPlay
+        loop
+        muted
+        playsInline>
+        <source
+          src='/videos/hero.webm'
+          type='video/webm'
+        />
+        Tu navegador no soporta el video en HTML5.
+      </video>
+
+      {/* Contenido del Hero */}
+      <div className='relative w-full h-full flex flex-col items-center pt-38 sm:pt-10 md:justify-center'>
         <div className='md:block hidden flex-1'></div>
         <div
           id='hero-content'
-          className='flex flex-4 flex-col  items-center gap-8 max-w-6xl   md:p-0'>
+          className='flex flex-4 flex-col items-center gap-8 max-w-6xl md:p-0'>
           <div
-            className=' flex flex-col items-center gap-4  '
+            className='flex flex-col items-center gap-4'
             id='text-content'>
-            <h2 className=' font-special text-mobile-title sm:text-tablet-title lg:text-web-title text-[#222122] text-center font-bold tracking-tight  leading-none  '>
+            <h2 className='font-special text-mobile-title sm:text-tablet-title lg:text-web-title text-secondary text-center font-bold tracking-tight leading-none'>
               Incursiona con nosotros en el futuro de la construcción
             </h2>
-            <h4 className=' text-mobile-subtitle  lg:text-web-subtitle   sm:text-tablet-subtitle text-center  px-4'>
+            <h4 className='text-mobile-subtitle lg:text-web-subtitle sm:text-tablet-subtitle text-center px-4 text-secondary'>
               Diseño a medida, calidad garantizada y entregas en tiempo récord.
             </h4>
           </div>

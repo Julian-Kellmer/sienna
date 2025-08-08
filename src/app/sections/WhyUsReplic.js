@@ -125,7 +125,7 @@ const WhyUs = () => {
                           {items.title}
                         </h2>
                       </div>
-                      <p className='font-Gotham-light text-mobile-subtitle sm:text-tablet-subtitle lg:text-web-subtitle px-6 sm:px-16 lg:px-8 '>
+                      <p className='font-Gotham-light text-mobile-subtitle sm:text-tablet-subtitle lg:text-web-subtitle px-6 sm:px-16 lg:px-8 max-w-sm md:max-w-full '>
                         {items.subtitle}
                       </p>
                     </div>

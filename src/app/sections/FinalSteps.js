@@ -84,11 +84,11 @@ const FinalSteps = () => {
 
         {/* Fila 2 */}
         <div className="w-full flex flex-col lg:flex-row-reverse">
-          <div className="lg:flex-1 p-4 hidden lg:block text-end">
-            <h5 className="text-web-title font-bold tracking-tight leading-14 max-w-2xl">
-              Diseñamos tu espacio <br />y lo hacemos oficial
+          <div className=" lg:flex-1 p-4 hidden lg:flex flex-col align-end content-end items-end   ">
+            <h5 className="text-web-title font-bold tracking-tight leading-14 max-w-xl">
+              Diseñamos tu espacio y lo hacemos oficial
             </h5>
-            <span className="text-primary/50 text-web-title font-bold tracking-tight leading-14 max-w-2xl">
+            <span className="text-primary/50 text-web-title font-bold tracking-tight leading-14 min-w-xl">
               Se firma y se Confirma
             </span>
           </div>

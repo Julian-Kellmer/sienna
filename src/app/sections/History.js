@@ -62,31 +62,56 @@ const History = () => {
   return (
     <section
       ref={containerRef}
-      className='min-h-screen md:h-[500vh] bg-white flex flex-col md:flex-row relative overflow-hidden'>
+      className='min-h-screen md:h-[500vh] bg-white flex flex-col md:flex-row relative overflow-hidden '>
       {/* Parte izquierda fija */}
-      <div className='info md:w-1/2 md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-black/25 bg-white shadow-xl flex flex-col justify-between'>
-        <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25'>
-          <h2 className='text-xl md:text-2xl font-bold text-web-section text-Gotham tracking-tight leading-none max-w-2xl'>
+      <div className='info 
+      md:w-1/2  md:h-screen
+      md:sticky md:top-0
+      border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
+      flex flex-col md:justify-between '>
+        <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25 border-dashed'>
+          <h2 className='text-[2rem] md:text-web-title lading-none  font-bold  text-Gotham tracking-tight leading-none max-w-2xl'>
             Crea tu espacio con la efectividad adecuada
           </h2>
-          <p className='text-sm md:text-base max-w-2xl'>
+          <p className='font-Gotham-light text-sm md:text-base max-w-2xl'>
             Somos SIENNA, una empresa argentina dedicada a la arquitectura y
             construcción modular, donde la innovación, el diseño a medida y la
             excelencia técnica se combinan para crear espacios únicos,
             funcionales y sostenibles.
           </p>
         </div>
-        <div className='p-4 md:p-16 max-w-2xl'>
-          {informacion.map((item, i) => (
-            <div key={i} className='mb-4'>
-              <div className='font-bold text-web-subtitle'>{item.titulo}</div>
-              {activeIndex === i && (
-                <div className='mt-2 text-sm p-2 transition-opacity duration-300 opacity-100'>
-                  {item.descripcion}
+        <div className='p-4 md:p-16 max-w-2xl '>
+          <div className='p-4 md:p-16 max-w-2xl '>
+            {/* En desktop: mostrar lista completa */}
+            <div className='hidden md:block'>
+              {informacion.map((item, i) => (
+                <div
+                  key={i}
+                  className='mb-4'>
+                  <div className='font-bold border-black/25 border-dashed border-b text-web-subtitle font-Gotham-light'>
+                    {item.titulo}
+                  </div>
+                  {activeIndex === i && (
+                    <div className='font-Gotham-light mt-2 text-sm p-2 transition-opacity duration-300 opacity-100'>
+                      {item.descripcion}
+                    </div>
+                  )}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
+
+            {/* En mobile: mostrar solo el índice activo */}
+            <div className='block md:hidden'>
+              <div className='mb-4'>
+                <div className='font-bold border-black/25 border-dashed border-b text-web-subtitle font-Gotham-light'>
+                  {informacion[activeIndex].titulo}
+                </div>
+                <div className='font-Gotham-light mt-2 text-sm p-2 transition-opacity duration-300 opacity-100'>
+                  {informacion[activeIndex].descripcion}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
