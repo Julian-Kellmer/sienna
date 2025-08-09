@@ -57,7 +57,7 @@ const WhyUs = () => {
           textContainer.getBoundingClientRect().height
         const startPosition = textContainerPositionHeight/2
         const targetPosition = -textContainerPositionHeight
-        const totalDistance = startPosition*3 - targetPosition
+        const totalDistance = startPosition*3.5 - targetPosition
         const currentY = startPosition - progress * totalDistance
 
         gsap.set('.text-wrapper', {
@@ -104,28 +104,28 @@ const WhyUs = () => {
       <div className=' md:mx-24  flex  border-x border-t border-black/25 h-full   justify-center  '>
         {/* aca va a estar el titulo y el carrusel con los contenidos */}
         <div className='flex flex-col w-full md:flex-4 h-full   border-r border-black/25'>
-          <div className='flex-1   h-full relative border-t border-dashed border-black/25 overflow-hidden '>
-            <div className='  border-x border-y border-dashed border-black/25 absolute top-0 left-[3vw] md:left-1/8 md:w-6/8 w-[90vw] h-full '></div>
+          <div className='flex-1   h-full relative md:border-t border-dashed border-black/25 overflow-hidden '>
+            <div className='  border-x md:border-y border-dashed border-black/25 absolute top-0 left-[3vw] md:left-1/8 md:w-6/8 w-[90vw] h-full '></div>
             <div className='  text-wrapper md:absolute top-0 md:left-1/8 w-full md:w-6/8 h-full gap-48  flex  flex-col  items-center justify-around -translate-y-[-100%]   '>
               {info.map((items, index) => {
                 return (
                   <div
                     key={index}
-                    className='titlesElements  gap-6 transition-all duration-150 ease-out flex max-w-xl  '>
+                    className='titlesElements  md:gap-6 transition-all duration-150 ease-out flex max-w-xl  '>
                     <div className=' flex self-start  '></div>
                     <div className='  text-center  flex  flex-col justify-center items-center gap-4 '>
-                      <div className='flex align-center flex-col gap-2  items-center content-center '>
+                      <div className='flex align-center flex-col gap-2  items-center content-center max-w-2xs md:max-w-full   '>
                         <div className='  '>
                           <img
                             src={items.icon}
                             alt={items.icon}
                           />
                         </div>
-                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2.5rem] text-[1.8rem] max-w-sm md:max-w-full  '>
+                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2.5rem] text-[1.6rem] '>
                           {items.title}
                         </h2>
                       </div>
-                      <p className='font-Gotham-light text-mobile-subtitle sm:text-tablet-subtitle lg:text-web-subtitle px-6 sm:px-16 lg:px-8 max-w-sm md:max-w-full '>
+                      <p className='font-Gotham-light text-mobile-body sm:text-tablet-subtitle lg:text-web-subtitle px-12 sm:px-16 lg:px-8 max-w-sm md:max-w-full '>
                         {items.subtitle}
                       </p>
                     </div>

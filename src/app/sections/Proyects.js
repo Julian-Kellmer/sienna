@@ -16,7 +16,7 @@ const Proyects = () => {
             <div
               id='titulos'
               className=' md:flex-12  flex  h-full  px-8 py-24 gap-4'>
-              <h2 className='   title font-bold tracking-tight text-primary leading-none text-[3.5rem] md:text-web-title md:max-w-3xl md:px-32 lg:text-web-title'>
+              <h2 className='   title font-bold tracking-tight text-primary leading-none  text-mobile-title md:text-web-title md:max-w-3xl md:px-32 lg:text-web-title'>
                 Algunos de nuestros ultimos{' '}
                 <span className='text-primary/50'>Modulos</span>
               </h2>

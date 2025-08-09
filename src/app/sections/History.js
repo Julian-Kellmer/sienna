@@ -68,8 +68,8 @@ const History = () => {
       md:w-1/2  md:h-screen
       md:sticky md:top-0
       border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
-      flex flex-col md:justify-between '>
-        <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25 border-dashed'>
+      flex flex-col md:justify-between z-1000  bg-white'>
+        <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25 border-dashed '>
           <h2 className='text-[2rem] md:text-web-title lading-none  font-bold  text-Gotham tracking-tight leading-none max-w-2xl'>
             Crea tu espacio con la efectividad adecuada
           </h2>
@@ -83,7 +83,7 @@ const History = () => {
         <div className='p-4 md:p-16 max-w-2xl '>
           <div className='p-4 md:p-16 max-w-2xl '>
             {/* En desktop: mostrar lista completa */}
-            <div className='hidden md:block'>
+            <div className='hidden md:block '>
               {informacion.map((item, i) => (
                 <div
                   key={i}
@@ -101,7 +101,7 @@ const History = () => {
             </div>
 
             {/* En mobile: mostrar solo el índice activo */}
-            <div className='block md:hidden'>
+            <div className='block md:hidden '>
               <div className='mb-4'>
                 <div className='font-bold border-black/25 border-dashed border-b text-web-subtitle font-Gotham-light'>
                   {informacion[activeIndex].titulo}
