@@ -35,7 +35,7 @@ const Hero = () => {
         muted
         playsInline>
         <source
-          src='/videos/hero.webm'
+          src='/videos/hero.mp4'
           type='video/webm'
         />
         Tu navegador no soporta el video en HTML5.
