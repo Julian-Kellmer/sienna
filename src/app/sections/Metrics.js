@@ -2,11 +2,11 @@ import React from 'react'
 
 const Metrics = () => {
   return (
-    <section className='flex-col w-full  h-[100svh] relative md:py-0 py-4 flex '>
+    <section className='flex-col w-full  h-[100svh] relative md:py-0  flex '>
       <div className='hidden md:flex h-full'>
-        <div className='flex-4 border border-dashed border-black/25'></div>
-        <div className='flex-2 border border-dashed border-black/25'></div>
-        <div className='flex-2 border border-dashed border-black/25'></div>
+        <div className='flex-4 border-x border-dashed border-black/25'></div>
+        <div className='flex-2 border-x border-dashed border-black/25'></div>
+        <div className='flex-2 border-x border-dashed border-black/25'></div>
       </div>
       <div className='flex h-full md:flex-row flex-col'>
         <div className=' flex-3 md:flex-4 border border-dashed border-black/25 flex flex-col align-center content-center items-center justify-center'>

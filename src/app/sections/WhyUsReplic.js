@@ -47,7 +47,7 @@ const WhyUs = () => {
       end: `+=${window.innerHeight * 8}px`,
       pin: true,
       pinSpacing: true,
-      scrub: 1,
+      scrub: true,
       onUpdate: (self) => {
         const progress = self.progress
         const textContainer = document.querySelector('.text-wrapper')
@@ -55,9 +55,9 @@ const WhyUs = () => {
 
         const textContainerPositionHeight =
           textContainer.getBoundingClientRect().height
-        const startPosition = textContainerPositionHeight/2
+        const startPosition = textContainerPositionHeight/3
         const targetPosition = -textContainerPositionHeight
-        const totalDistance = startPosition*3.5 - targetPosition
+        const totalDistance = startPosition - targetPosition
         const currentY = startPosition - progress * totalDistance
 
         gsap.set('.text-wrapper', {
@@ -99,14 +99,14 @@ const WhyUs = () => {
 
   return (
     <section
-      id='whyUs'
+      id='nosotros'
       className='whyUs h-screen relative bg-white overflow-hidden'>
       <div className=' md:mx-24  flex  border-x border-t border-black/25 h-full   justify-center  '>
         {/* aca va a estar el titulo y el carrusel con los contenidos */}
         <div className='flex flex-col w-full md:flex-4 h-full   border-r border-black/25'>
           <div className='flex-1   h-full relative md:border-t border-dashed border-black/25 overflow-hidden '>
             <div className='  border-x md:border-y border-dashed border-black/25 absolute top-0 left-[3vw] md:left-1/8 md:w-6/8 w-[90vw] h-full '></div>
-            <div className='  text-wrapper md:absolute top-0 md:left-1/8 w-full md:w-6/8 h-full gap-48  flex  flex-col  items-center justify-around -translate-y-[-100%]   '>
+            <div className='  text-wrapper md:absolute top-0 md:left-1/8 w-full md:w-6/8 h-full gap-24  flex  flex-col  items-center justify-around -translate-y-[-100%]   '>
               {info.map((items, index) => {
                 return (
                   <div
@@ -121,11 +121,11 @@ const WhyUs = () => {
                             alt={items.icon}
                           />
                         </div>
-                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2.5rem] text-[1.6rem] '>
+                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2rem] text-[1.6rem] '>
                           {items.title}
                         </h2>
                       </div>
-                      <p className='font-Gotham-light text-mobile-body sm:text-tablet-subtitle lg:text-web-subtitle px-12 sm:px-16 lg:px-8 max-w-sm md:max-w-full '>
+                      <p className='font-Gotham-light text-mobile-body sm:text-tablet-subtitle lg:text-web-body px-12 sm:px-16 lg:px-8 max-w-sm md:max-w-full '>
                         {items.subtitle}
                       </p>
                     </div>
@@ -146,6 +146,8 @@ const WhyUs = () => {
                     <Image
                       src={img.image}
                       fill
+                      // width={500}
+                      // height={500}
                       alt='fotos de ejemplos de modulos'
                       className='object-cover'
                     />

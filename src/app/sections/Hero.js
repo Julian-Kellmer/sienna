@@ -15,17 +15,19 @@ const Hero = () => {
     gsap.from('#video-frame', {
       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
       ease: 'power2.inOut',
-      scrollTrigger:{
-        trigger: '#video-frame', 
+      scrollTrigger: {
+        trigger: '#video-frame',
         start: 'top top',
         end: 'bottom center',
         scrub: true,
-      }
+      },
     })
   })
 
   return (
-    <section className='h-screen relative overflow-hidden'>
+    <section
+      id='inicio'
+      className='h-screen relative overflow-hidden'>
       {/* Video de fondo */}
       <video
         id='video-frame'

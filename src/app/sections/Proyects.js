@@ -9,7 +9,7 @@ const categorias = ['Casas', 'Turismo']
 const Proyects = () => {
   const [isSelected, setIsSelected] = useState('')
   return (
-    <section className='  bg-white pb-16'>
+    <section id='proyectos' className='  bg-white '>
       <div className='flex flex-col  h-full '>
         <div className='flex w-full  lg:px-24 border-t border-b border-black/25'>
           <div className='flex w-full  '>
@@ -24,28 +24,10 @@ const Proyects = () => {
             <div className=' flex-7'></div>
           </div>
         </div>
-        {/* <div className='flex-2 border-y  border-black/25 flex'>
-          
-          <div className='flex-1 categorys flex justify-end items-end p-8 lg:gap-16 gap-2'>
-            {categorias.map((cat, index) => {
-              return (
-                <div
-                  key={index}
-                  className={
-                    isSelected === cat
-                      ? 'capitalize border-b '
-                      : 'capitalize border-none'
-                  }
-                  onClick={() => setIsSelected(cat)}>
-                  {cat}
-                </div>
-              )
-            })}
-          </div> 
-        </div> */}
+        
         <div className='flex flex-9 gap-2 lg:flex-row flex-col  '>
-          <div className=' main-proyect border-r border-dashed border-black/25 flex-1 flex justify-center items-center '>
-            <div className='gap-8 p-12 w-full  h-full  flex-col flex justify-center items-start '>
+          <div className=' main-proyect border-r border-dashed border-black/25 flex-1 flex justify-center items-center p-6'>
+            <div className='gap-8  w-full  h-full  flex-col flex justify-center items-start border border-black/25 border-dashed  p-6'>
               <div className='image-container relative w-full h-auto aspect-video'>
                 <Image
                   src='/casas/45SenL/1.png'
@@ -69,8 +51,8 @@ const Proyects = () => {
               <div
                 key={proyecto.id}
                 className=' w-full border border-dashed border-black/25'>
-                <div className='gap-2 p-4 flex flex-col justify-center items-start  '>
-                  <div className='image-container relative w-full aspect-video'>
+                <div className=' gap-2 p-4 flex flex-col justify-center items-start   '>
+                  <div className='image-container relative w-full aspect-video '>
                     <Image
                       src={proyecto.images[0]}
                       alt={`Foto del proyecto ${proyecto.nombre}`}
@@ -122,7 +104,7 @@ const Proyects = () => {
           )}
         </div>
       </div>
-      <div className='w-full h-[15vh]   mt-2  border-t border-dashed border-black/25'></div>
+      {/* <div className='w-full h-[15vh]   mt-2  border-t border-dashed border-black/25'></div> */}
     </section>
   )
 }

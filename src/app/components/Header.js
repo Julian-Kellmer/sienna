@@ -5,11 +5,25 @@ import Button from './Button'
 import gsap from 'gsap'
 import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 
 const Header = () => {
   const headerRef = useRef(null)
   const [atTop, setAtTop] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
+  const handleScroll = (e, id) => {
+    e.preventDefault()
+    if (pathname === '/') {
+      // Scroll suave en la misma página
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      // Ir a la home y luego scrollear
+      router.push(`/#${id}`)
+    }
+  }
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -48,21 +62,40 @@ const Header = () => {
         ref={headerRef}
         className={`fixed top-0 left-0 z-50 px-8 py-4 w-full flex items-center justify-between transition-colors duration-300 ${
           atTop ? 'bg-transparent' : 'bg-white shadow-lg'
-        }`}
-      >
+        }`}>
         {/* NAV izquierda (desktop) */}
         <nav className='md:flex hidden flex-1 items-center'>
           <ul className='flex gap-8 text-black font-book font-light'>
-            <li>Inicio</li>
-            <li>Nosotros</li>
-            <li>Proyecto</li>
-            <li>Contacto</li>
+            <li>
+              <a
+                href='/'
+                onClick={(e) => handleScroll(e, 'inicio')}>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                href='/'
+                onClick={(e) => handleScroll(e, 'nosotros')}>
+                Nosotros
+              </a>
+            </li>
+            <li>
+              <a
+                href='/'
+                onClick={(e) => handleScroll(e, 'proyectos')}>
+                Proyectos
+              </a>
+            </li>
           </ul>
         </nav>
 
         {/* LOGO centro */}
         <div className='flex-1 flex justify-center'>
-          <img src='/images/Logo.svg' alt='Logo' />
+          <img
+            src='/images/Logo.svg'
+            alt='Logo'
+          />
         </div>
 
         {/* NAV derecha (desktop) */}
@@ -75,8 +108,7 @@ const Header = () => {
           <button
             onClick={() => setMenuOpen(true)}
             className='text-black'
-            aria-label='Abrir menú'
-          >
+            aria-label='Abrir menú'>
             <Menu size={24} />
           </button>
         </div>
@@ -101,15 +133,13 @@ const Header = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
+              transition={{ duration: 0.3, ease: 'easeInOut' }}>
               {/* Cierre */}
               <div className='flex justify-end mb-6'>
                 <button
                   onClick={() => setMenuOpen(false)}
                   className='text-black'
-                  aria-label='Cerrar menú'
-                >
+                  aria-label='Cerrar menú'>
                   <X size={24} />
                 </button>
               </div>
@@ -120,7 +150,6 @@ const Header = () => {
                   <li onClick={() => setMenuOpen(false)}>Inicio</li>
                   <li onClick={() => setMenuOpen(false)}>Nosotros</li>
                   <li onClick={() => setMenuOpen(false)}>Proyecto</li>
-                  <li onClick={() => setMenuOpen(false)}>Contacto</li>
                 </ul>
               </nav>
 

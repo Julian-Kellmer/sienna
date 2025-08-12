@@ -68,7 +68,7 @@ const History = () => {
       md:w-1/2  md:h-screen
       md:sticky md:top-0
       border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
-      flex flex-col md:justify-between z-1000  bg-white'>
+      flex flex-col md:justify-between  bg-white'>
         <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25 border-dashed '>
           <h2 className='text-[2rem] md:text-web-title lading-none  font-bold  text-Gotham tracking-tight leading-none max-w-2xl'>
             Crea tu espacio con la efectividad adecuada
