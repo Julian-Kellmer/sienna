@@ -64,7 +64,8 @@ const History = () => {
       ref={containerRef}
       className='min-h-screen md:h-[500vh] bg-white flex flex-col md:flex-row relative overflow-hidden '>
       {/* Parte izquierda fija */}
-      <div className='info 
+      <div
+        className='info 
       md:w-1/2  md:h-screen
       md:sticky md:top-0
       border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
@@ -127,6 +128,9 @@ const History = () => {
               autoPlay
               muted
               loop
+              playsInline
+              preload='auto'
+              // poster={foto}
             />
           </div>
         ))}

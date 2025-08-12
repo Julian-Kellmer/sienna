@@ -35,7 +35,10 @@ const Hero = () => {
         autoPlay
         loop
         muted
-        playsInline>
+        playsInline
+        poster='/images/background.jpg'
+        preload='auto'
+        >
         <source
           src='/videos/hero.mp4'
           type='video/webm'
@@ -44,7 +47,7 @@ const Hero = () => {
       </video>
 
       {/* Contenido del Hero */}
-      <div className='relative w-full h-full flex flex-col items-center pt-38 sm:pt-10 md:justify-center'>
+      <div className='relative w-full h-full flex flex-col items-center px-4 pt-38 sm:pt-10 md:justify-center'>
         <div className='md:block hidden flex-1'></div>
         <div
           id='hero-content'
@@ -52,7 +55,7 @@ const Hero = () => {
           <div
             className='flex flex-col items-center gap-4'
             id='text-content'>
-            <h2 className='font-special text-mobile-title sm:text-tablet-title lg:text-web-title text-secondary text-center font-bold tracking-tight leading-none'>
+            <h2 className='px-4 font-special text-mobile-title sm:text-tablet-title lg:text-web-title text-secondary text-center font-bold tracking-tight leading-none'>
               Incursiona con nosotros en el futuro de la construcción
             </h2>
             <h4 className='text-mobile-subtitle lg:text-web-subtitle sm:text-tablet-subtitle text-center px-4 text-secondary'>

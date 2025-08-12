@@ -21,7 +21,7 @@ export default function Home() {
 
   useEffect(() => {
     function update(time) {
-      lenisRef.current?.lenis?.raf(time * 1000)
+      lenisRef.current?.lenis?.raf(time * 1500)
     }
 
     gsap.ticker.add(update)

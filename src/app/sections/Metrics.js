@@ -21,13 +21,13 @@ const Metrics = () => {
         </div>
         <div className='flex align-center  flex-2 border border-dashed border-black/25 flex-col align-center content-center items-center justify-center'>
           <div className='flex flex-col  items-center  '>
-            <h3 className='font-bold  leading-none text-[8rem] md:text-[10rem]'>60</h3>
+            <h3 className='font-bold  leading-none text-mobile-title md:text-[10rem]'>60</h3>
             <p className='font-Gotham-light '>Dias promedio de entrega</p>
           </div>
         </div>
         <div className='flex align-center  flex-2 border border-dashed border-black/25 flex-col align-center content-center items-center justify-center'>
           <div className='flex flex-col  items-center  '>
-            <h3 className='font-bold text-[8rem] md:text-[10rem] leading-none'>90</h3>
+            <h3 className='font-bold text-mobile-title md:text-[10rem] leading-none'>90</h3>
             <p className='font-Gotham-light '>Proyectos realizados</p>
           </div>
         </div>

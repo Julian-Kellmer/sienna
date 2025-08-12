@@ -9,22 +9,24 @@ const categorias = ['Casas', 'Turismo']
 const Proyects = () => {
   const [isSelected, setIsSelected] = useState('')
   return (
-    <section id='proyectos' className='  bg-white '>
+    <section
+      id='proyectos'
+      className='  bg-white '>
       <div className='flex flex-col  h-full '>
         <div className='flex w-full  lg:px-24 border-t border-b border-black/25'>
           <div className='flex w-full  '>
             <div
               id='titulos'
-              className=' md:flex-12  flex  h-full  px-8 py-24 gap-4'>
-              <h2 className='   title font-bold tracking-tight text-primary leading-none  text-mobile-title md:text-web-title md:max-w-3xl md:px-32 lg:text-web-title'>
-                Algunos de nuestros ultimos{' '}
-                <span className='text-primary/50'>Modulos</span>
+              className=' md:flex-12  flex  h-full  px-8 py-16 gap-4'>
+              <h2 className='   title font-bold tracking-tight text-primary leading-none  text-mobile-title md:text-tablet-title md:max-w-3xl md:px-32 lg:text-web-title'>
+                Nuestros ultimos{' '}
+                <span className='text-primary/50'>Proyectos</span>
               </h2>
             </div>
             <div className=' flex-7'></div>
           </div>
         </div>
-        
+
         <div className='flex flex-9 gap-2 lg:flex-row flex-col  '>
           <div className=' main-proyect border-r border-dashed border-black/25 flex-1 flex justify-center items-center p-6'>
             <div className='gap-8  w-full  h-full  flex-col flex justify-center items-start border border-black/25 border-dashed  p-6'>
@@ -73,9 +75,9 @@ const Proyects = () => {
             ))}
           </div>
         </div>
-        <div className='flex-1 '>
+        <div className='flex-1 mt-16'>
           {proyectos.length > 5 && (
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  border-black/25 mt-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  border-black/25 mt-4 px-4'>
               {proyectos.slice(5).map((proyecto) => (
                 <div
                   key={proyecto.id}

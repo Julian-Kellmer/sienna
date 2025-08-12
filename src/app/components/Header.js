@@ -147,9 +147,36 @@ const Header = () => {
               {/* Navegación */}
               <nav>
                 <ul className='flex flex-col gap-6 text-lg font-light text-black'>
-                  <li onClick={() => setMenuOpen(false)}>Inicio</li>
-                  <li onClick={() => setMenuOpen(false)}>Nosotros</li>
-                  <li onClick={() => setMenuOpen(false)}>Proyecto</li>
+                  <li>
+                    <a
+                      href='/'
+                      onClick={(e) => {
+                        handleScroll(e, 'inicio')
+                        setMenuOpen(false)
+                      }}>
+                      Inicio
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href='/'
+                      onClick={(e) => {
+                        handleScroll(e, 'nosotros')
+                        setMenuOpen(false)
+                      }}>
+                      Nosotros
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href='/'
+                      onClick={(e) => {
+                        handleScroll(e, 'proyectos')
+                        setMenuOpen(false)
+                      }}>
+                      Proyectos
+                    </a>
+                  </li>
                 </ul>
               </nav>
 
