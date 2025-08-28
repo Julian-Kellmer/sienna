@@ -69,22 +69,22 @@ const History = () => {
       md:w-1/2  md:h-screen
       md:sticky md:top-0
       border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
-      flex flex-col md:justify-between  bg-white'>
-        <div className='p-6 md:p-24 flex flex-col gap-4 border-b border-black/25 border-dashed '>
-          <h2 className='text-[2rem] md:text-web-title lading-none  font-bold  text-Gotham tracking-tight leading-none max-w-2xl'>
+      flex flex-col md:justify-center  bg-white'>
+        <div className='p-6 md:px-8 flex flex-col gap-4 border-b border-black/25 border-dashed   '>
+          <h2 className='text-mobile-title sm:text-tablet-title md:text-web-title   lading-none  font-bold self-center  text-Gotham tracking-tight leading-none max-w-2xl'>
             Crea tu espacio con la efectividad adecuada
           </h2>
-          <p className='font-Gotham-light text-sm md:text-base max-w-2xl'>
+          <p className='font-Gotham-light text-mobile-body md:text-web-body max-w-2xl self-center '>
             Somos SIENNA, una empresa argentina dedicada a la arquitectura y
             construcción modular, donde la innovación, el diseño a medida y la
             excelencia técnica se combinan para crear espacios únicos,
             funcionales y sostenibles.
           </p>
         </div>
-        <div className='p-4 md:p-16 max-w-2xl '>
-          <div className='p-4 md:p-16 max-w-2xl '>
+        <div className='self-center   max-w-2xl '>
+          <div className='py-16  max-w-2xl'>
             {/* En desktop: mostrar lista completa */}
-            <div className='hidden md:block '>
+            <div className='hidden md:block m-x-auto'>
               {informacion.map((item, i) => (
                 <div
                   key={i}

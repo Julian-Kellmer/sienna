@@ -60,48 +60,99 @@ const Header = () => {
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 z-50 px-8 py-4 w-full flex items-center justify-between transition-colors duration-300 ${
-          atTop ? 'bg-transparent' : 'bg-white shadow-lg'
+        className={`fixed left-0 z-50 w-full flex  ${
+          atTop
+            ? ' border-y border-black/25 border-dashed top-6'
+            : 'top-0 bg-white shadow-lg'
         }`}>
         {/* NAV izquierda (desktop) */}
-        <nav className='md:flex hidden flex-1 items-center'>
-          <ul className='flex gap-8 text-black font-book font-light'>
-            <li>
-              <a
-                href='/'
-                onClick={(e) => handleScroll(e, 'inicio')}>
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href='/'
-                onClick={(e) => handleScroll(e, 'nosotros')}>
-                Nosotros
-              </a>
-            </li>
-            <li>
-              <a
-                href='/'
-                onClick={(e) => handleScroll(e, 'proyectos')}>
-                Proyectos
-              </a>
-            </li>
-          </ul>
-        </nav>
 
-        {/* LOGO centro */}
-        <div className='flex-1 flex justify-center'>
-          <img
-            src='/images/Logo.svg'
-            alt='Logo'
-          />
-        </div>
+        <div className=' flex-1 '></div>
+        <div className='relative flex flex-16  h-full  justify-around py-4 px-6  '>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='14'
+            height='14'
+            viewBox='0 0 20 20'
+            className={`${atTop ? 'top-[-6px] left-[-7px]':'hidden'} absolute  transition-transform duration-500 hover:rotate-[180deg]`}>
+            <path
+              fill='black'
+              d='M10 0c.423 0 .766.343.766.766v8.467h8.468a.766.766 0 1 1 0 1.533h-8.468v8.468a.766.766 0 1 1-1.532 0l-.001-8.468H.766a.766.766 0 0 1 0-1.532l8.467-.001V.766A.768.768 0 0 1 10 0Z'
+            />
+          </svg>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='14'
+            height='14'
+            viewBox='0 0 20 20'
+            className={`${atTop ? 'top-[-6px] right-[-7px]':'hidden'} absolute  transition-transform duration-500 hover:rotate-[180deg]`}>
+            <path
+              fill='black'
+              d='M10 0c.423 0 .766.343.766.766v8.467h8.468a.766.766 0 1 1 0 1.533h-8.468v8.468a.766.766 0 1 1-1.532 0l-.001-8.468H.766a.766.766 0 0 1 0-1.532l8.467-.001V.766A.768.768 0 0 1 10 0Z'
+            />
+          </svg>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='14'
+            height='14'
+            viewBox='0 0 20 20'
+            className={`${atTop ? 'bottom-[-6px] right-[-7px]':'hidden'} absolute  transition-transform duration-500 hover:rotate-[180deg]`}>
+            <path
+              fill='black'
+              d='M10 0c.423 0 .766.343.766.766v8.467h8.468a.766.766 0 1 1 0 1.533h-8.468v8.468a.766.766 0 1 1-1.532 0l-.001-8.468H.766a.766.766 0 0 1 0-1.532l8.467-.001V.766A.768.768 0 0 1 10 0Z'
+            />
+          </svg>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='14'
+            height='14'
+            viewBox='0 0 20 20'
+            className={`${atTop ? 'bottom-[-6px] left-[-7px]':'hidden'} absolute  transition-transform duration-500 hover:rotate-[180deg]`}>
+            <path
+              fill='black'
+              d='M10 0c.423 0 .766.343.766.766v8.467h8.468a.766.766 0 1 1 0 1.533h-8.468v8.468a.766.766 0 1 1-1.532 0l-.001-8.468H.766a.766.766 0 0 1 0-1.532l8.467-.001V.766A.768.768 0 0 1 10 0Z'
+            />
+          </svg>
+          <nav className=' relative md:flex hidden  flex-1 items-center'>
+            <ul className='flex gap-8 text-black font-book font-light'>
+              <li>
+                <a
+                  href='/'
+                  onClick={(e) => handleScroll(e, 'inicio')}>
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/'
+                  onClick={(e) => handleScroll(e, 'nosotros')}>
+                  Nosotros
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/'
+                  onClick={(e) => handleScroll(e, 'proyectos')}>
+                  Proyectos
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-        {/* NAV derecha (desktop) */}
-        <div className='md:flex hidden flex-1 justify-end'>
-          <Button text='Contactanos' />
+          {/* LOGO centro */}
+          <div className='flex-1 flex justify-center'>
+            <img
+              src='/images/Logo.svg'
+              alt='Logo'
+            />
+          </div>
+
+          {/* NAV derecha (desktop) */}
+          <div className='md:flex hidden flex-1 justify-end'>
+            <Button text='Contactanos' />
+          </div>
         </div>
+        <div className=' flex-1'></div>
 
         {/* Botón menú hamburguesa (mobile) */}
         <div className='md:hidden flex items-center'>
