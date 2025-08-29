@@ -17,7 +17,7 @@ const WhyUs = () => {
     <section
       id='nosotros'
       className='whyUs relative overflow-hidden'>
-      <div className='title flex flex-col border-y border-black/25 px-64 py-16 gap-4'>
+      <div className='title flex flex-col border-y border-black/25 md:px-64 md:py-16 gap-4 py-8 px-4'>
         <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-web-title font-bold'>
           Porque elegirnos es la <br />
           <span className='text-primary/75'> mejor opción</span>
@@ -27,7 +27,7 @@ const WhyUs = () => {
         </p>
       </div>
 
-      <div className='flex h-screen'>
+      <div className='flex md:h-screen'>
         <div className='flex-1 hidden sm:block'></div>
 
         {/* div central */}
@@ -38,16 +38,16 @@ const WhyUs = () => {
                 <div className='flex relative'>
                   {row.map((item, i) => (
                     <React.Fragment key={i}>
-                      <div className='flex-1 flex flex-col gap-4 px-6 py-8 text-center items-center justify-center transition-all hover:bg-secondary/25 duration-550 ease-in-out relative'>
+                      <div className='flex-1 flex flex-col gap-4 px-2 md:px-6 py-8 text-center items-center justify-center transition-all hover:bg-secondary/25 duration-550 ease-in-out relative'>
                         <img
-                          className='w-16 h-16 mx-auto'
+                          className='w-8 h-8 md:w-16 md:h-16 mx-auto'
                           src={item.icon}
                           alt=''
                         />
-                        <p className='text-[18px] font-Primary font-bold'>
+                        <p className=' text-mobile-body md:text-[18px] font-Primary font-bold'>
                           {item.title}
                         </p>
-                        <p className='text-[14px] font-Gotham-light px-8'>
+                        <p className='text-[14px] font-Gotham-light md:block hidden md:px-8'>
                           {item.subtitle}
                         </p>
                       </div>
