@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+'use client'
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
@@ -32,10 +33,12 @@ const informacion = [
 const History = () => {
   const containerRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
-
+  const titleRef = useRef(null)
+  const textRef = useRef(null)
   gsap.registerPlugin(ScrollTrigger)
 
-  useEffect(() => {
+  // ScrollTrigger para detectar secciones
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -50,8 +53,8 @@ const History = () => {
         ScrollTrigger.create({
           trigger: section,
           start: 'top center',
-          onEnter: () => setActiveIndex(i),
-          onEnterBack: () => setActiveIndex(i),
+          onEnter: () => handleIndexChange(i),
+          onEnterBack: () => handleIndexChange(i),
         })
       })
     }, containerRef)
@@ -59,69 +62,72 @@ const History = () => {
     return () => ctx.revert()
   }, [])
 
+  // Manejo de animaciones con salida → cambio → entrada
+  const handleIndexChange = (i) => {
+    if (i === activeIndex) return
+
+    const tl = gsap.timeline({
+      defaults: { duration: 0.5, ease: 'power2.inOut' },
+    })
+
+    tl.to([titleRef.current, textRef.current], {
+      opacity: 0,
+      y: -30,
+      onComplete: () => setActiveIndex(i),
+    }).fromTo(
+      [titleRef.current, textRef.current],
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, stagger: 0.2 },
+      '+=0.1'
+    )
+  }
+
   return (
     <section
       ref={containerRef}
-      className='min-h-screen md:h-[500vh] bg-white flex flex-col md:flex-row relative overflow-hidden '>
-      {/* Parte izquierda fija */}
+      className='min-h-screen md:h-[500vh] bg-white flex flex-col md:flex-row relative overflow-hidden'>
+      {/* Panel izquierdo */}
       <div
-        className='info 
-      md:w-1/2  md:h-screen
-      md:sticky md:top-0
-      border-b border-dashed md:border-b-0 md:border-r border-black/25  shadow-xl
-      flex flex-col md:justify-center  bg-white'>
-        <div className='p-6 md:px-8 flex flex-col gap-4 border-b border-black/25 border-dashed   '>
-          <h2 className='text-mobile-title sm:text-tablet-title md:text-web-title   lading-none  font-bold self-center  text-Gotham tracking-tight leading-none max-w-2xl'>
+        className='info  md:w-1/2  md:h-screen
+        md:sticky md:top-0
+        border-b border-dashed md:border-b-0 md:border-r border-black/25 shadow-xl
+        flex flex-col md:justify-center bg-white '>
+        {/* Bloque principal solo en desktop */}
+        <div className='p-6 md:px-8 flex-col gap-4 border-b border-black/25 border-dashed hidden md:flex'>
+          <h2 className='text-mobile-title sm:text-tablet-title md:text-web-title font-bold self-center text-Gotham tracking-tight leading-none max-w-2xl'>
             Crea tu espacio con la efectividad adecuada
           </h2>
-          <p className='font-Gotham-light text-mobile-body md:text-web-body max-w-2xl self-center '>
+          <p className='font-Gotham-light text-mobile-body md:text-web-body max-w-2xl self-center'>
             Somos SIENNA, una empresa argentina dedicada a la arquitectura y
             construcción modular, donde la innovación, el diseño a medida y la
             excelencia técnica se combinan para crear espacios únicos,
             funcionales y sostenibles.
           </p>
         </div>
-        <div className='self-center   max-w-2xl '>
-          <div className='py-16  max-w-2xl'>
-            {/* En desktop: mostrar lista completa */}
-            <div className='hidden md:block m-x-auto'>
-              {informacion.map((item, i) => (
-                <div
-                  key={i}
-                  className='mb-4'>
-                  <div className='font-bold border-black/25 border-dashed border-b text-web-subtitle font-Gotham-light'>
-                    {item.titulo}
-                  </div>
-                  {activeIndex === i && (
-                    <div className='font-Gotham-light mt-2 text-sm p-2 transition-opacity duration-300 opacity-100'>
-                      {item.descripcion}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* En mobile: mostrar solo el índice activo */}
-            <div className='block md:hidden '>
-              <div className='mb-4'>
-                <div className='font-bold border-black/25 border-dashed border-b text-web-subtitle font-Gotham-light'>
-                  {informacion[activeIndex].titulo}
-                </div>
-                <div className='font-Gotham-light mt-2 text-sm p-2 transition-opacity duration-300 opacity-100'>
-                  {informacion[activeIndex].descripcion}
-                </div>
-              </div>
-            </div>
-          </div>
+        
+        {/* Contenido dinámico → siempre visible en mobile */}
+        <div className='gap-2 h-[30vh]  justify-end flex flex-col md:self-center max-w-2xl pb-4 pt-12 md:py-12 px-4   border-black/25 border-dashed'>
+          <h3
+            ref={titleRef}
+            key={activeIndex + '-title'}
+            className='text-mobile-title sm:text-tablet-title md:text-web-title font-bold text-Gotham tracking-tight leading-none text-black/70'>
+            {informacion[activeIndex].titulo}
+          </h3>
+          <p
+            ref={textRef}
+            key={activeIndex + '-text'}
+            className='font-Gotham-light text-sm md:text-base '>
+            {informacion[activeIndex].descripcion}
+          </p>
         </div>
       </div>
 
-      {/* Parte derecha que se scrollea */}
+      {/* Videos */}
       <div className='videos w-full md:w-1/2 space-y-16 p-4 md:p-8'>
         {informacion.map((item, i) => (
           <div
             key={i}
-            className='video-block h-[60vh] md:h-screen border border-dashed border-black/25 flex items-center justify-center text-4xl font-bold'>
+            className='video-block h-[60vh] md:h-screen border border-dashed border-black/25 flex items-center justify-center'>
             <video
               src={item.video}
               className='w-full h-full object-cover'
@@ -130,7 +136,6 @@ const History = () => {
               loop
               playsInline
               preload='auto'
-              // poster={foto}
             />
           </div>
         ))}

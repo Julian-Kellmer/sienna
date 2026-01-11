@@ -7,6 +7,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 // import EmblaCarousel from '../../components/EmblaCarousel/EmblaCarusel'
 import ImageCarousel from '../../components/EmblaCarousel/ImageCarrousel'
 import Image from 'next/image'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 
 gsap.registerPlugin(ScrollTrigger)
 const OPTIONS = { loop: true }
@@ -15,7 +16,9 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 export default function ProyectoIndividual({ proyecto }) {
   const router = useRouter()
   const containerRef = useRef(null)
-
+  const navegateBack = () => {
+    router.back()
+  }
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.text-web-title', {
@@ -37,12 +40,16 @@ export default function ProyectoIndividual({ proyecto }) {
     <section
       ref={containerRef}
       className=' bg-white'>
-      <div className='flex lg:flex-row flex-col h-full  '>
+      <div className='flex lg:flex-row flex-col h-screen  '>
         {/* INFO LATERAL */}
-        <div className='flex-2 flex flex-col justify-between lg:pl-12  '>
+        <div className='flex-2 flex flex-col justify-between lg:pl-12   '>
           {/* Título y ubicación */}
           <div className='flex flex-col h-full pl-4 md:pl-16  justify-between '>
             <div className='pl-12 pt-12 border-l border-b flex flex-col justify-center'>
+              <FaArrowLeftLong
+                size={'2rem'}
+                onClick={navegateBack}
+              />
               <h1 className='pt-6 text-web-title font-bold mb-2'>
                 {proyecto.nombre}
               </h1>
@@ -98,9 +105,8 @@ export default function ProyectoIndividual({ proyecto }) {
         </div>
       </div>
       <div>
-        <ImageCarousel images={proyecto.images}/>
+        <ImageCarousel images={proyecto.images} />
       </div>
-
     </section>
   )
 }

@@ -1,21 +1,17 @@
 'use client'
-import Image from 'next/image'
-import Hero from './sections/Hero.js'
-
-import Proyects from './sections/Proyects.js'
 import Lenis from 'lenis'
 import { ReactLenis, useLenis } from 'lenis/react'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Hero2 from './sections/Hero2.js'
 import gsap from 'gsap'
 import Metrics from './sections/Metrics.js'
-import History from './sections/History.js'
 import FinalSteps from './sections/FinalSteps.js'
 import Footer from './components/Footer.js'
-import LoadingPage from './sections/LoadingPage.js'
 import WhyUsgrid from './sections/WhyUsgrid.js'
+import Proyect2 from './sections/Proyect2.js'
 
 export default function Home() {
+  const [options, setOptions] = useState(false)
   const lenisRef = useRef()
 
   useEffect(() => {
@@ -31,20 +27,19 @@ export default function Home() {
   return (
     <>
       <div className=' relative'>
-        <LoadingPage />
         <ReactLenis
           root
           options={{ autoRaf: false }}
           ref={lenisRef}
         />
-        {/* <Hero /> */}
         <Hero2 />
-        <WhyUsgrid /> 
-        <Proyects />
+        <WhyUsgrid />
+        <Proyect2 />
+
         <Metrics />
-        <History />
+        {/* <History /> */}
         <FinalSteps />
-        <Footer /> 
+        <Footer />
       </div>
     </>
   )

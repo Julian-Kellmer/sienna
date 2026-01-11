@@ -1,41 +1,82 @@
 import React from 'react'
+import RollingNumber from '../components/Reusables/RollingNumber'
+import BrandsMarquee from '../components/Reusables/BrandsMarquee'
 
+const brands1 = [
+  '/images/brands/quesealed.png',
+  '/images/brands/robrera.png',
+  '/images/brands/sanlorenzo.png',
+  '/images/brands/silestone.png',
+  '/images/brands/waterplac.png',
+]
+const brands2 = [
+  '/images/brands/Dekton.png',
+  '/images/brands/Jacuzzi.png',
+  '/images/brands/Piazza.png',
+  '/images/brands/Samsung.png',
+  '/images/brands/alberturas.png',
+]
 const Metrics = () => {
   return (
-    <section className='flex-col w-full  h-[100svh] relative md:py-0  flex '>
-      <div className='hidden md:flex h-full'>
-        <div className='flex-4 border-x border-dashed border-black/25'></div>
-        <div className='flex-2 border-x border-dashed border-black/25'></div>
-        <div className='flex-2 border-x border-dashed border-black/25'></div>
-      </div>
-      <div className='flex h-full md:flex-row flex-col'>
-        <div className=' flex-3 md:flex-4 border border-dashed border-black/25 flex flex-col align-center content-center items-center justify-center'>
-          <div className='flex flex-col gap-4 px-8'>
-            <h3 className='text-mobile-title  sm:text-tablet-text lg:text-web-title font-bold tracking-tighter leading-none'>
-              Un mejor futuro arranca <br /> <span className='text-primary/50'>en nuestra fabrica</span>
-            </h3>
-            <p className='font-Gotham-light text-mobile-body'>
-              En Sienna nos aseguramos que tengas la mejor experiencia
-            </p>
+    <section className='layout-wrap flex-col w-full min-h-screen relative py-12 md:py-0 flex justify-center'>
+      <div className='layout-grid h-full'>
+        {/* Top Left: Main Text */}
+        <div className='col-span-4 md:col-span-6  flex flex-col justify-center p-8 md:p-16 gap-4 min-h-[40vh] md:min-h-[50vh]'>
+          <h3 className='text-mobile-title sm:text-tablet-text lg:text-[3em] font-bold tracking-tighter leading-none'>
+            Un mejor futuro arranca <br />{' '}
+            <span className='text-primary/50'>en nuestra fabrica</span>
+          </h3>
+          <p className='font-Gotham-light text-mobile-body max-w-sm'>
+            En Sienna nos aseguramos que tengas la mejor experiencia
+          </p>
+        </div>
+
+        {/* Top Middle: Metric 60 */}
+        <div className='col-span-2 md:col-span-3  flex flex-col items-center justify-center p-4 min-h-[25vh] md:min-h-[50vh]'>
+          <RollingNumber
+            number={60}
+            textClassName='font-bold leading-none text-tablet-title md:text-[7rem]'
+            itemHeightClassName='h-[2.3em] md:h-[7rem]'
+          />
+          <p className='font-Gotham-light text-center text-sm md:text-base'>
+            Dias promedio de entrega
+          </p>
+        </div>
+
+        {/* Top Right: Metric 90 */}
+        <div className='col-span-2 md:col-span-3  flex flex-col items-center justify-center p-4 min-h-[25vh] md:min-h-[50vh]'>
+          <RollingNumber
+            number={90}
+            textClassName='font-bold text-mobile-title md:text-[7rem] leading-none'
+            itemHeightClassName='h-[1.8em] md:h-[7rem]'
+          />
+          <p className='font-Gotham-light text-center text-sm md:text-base'>
+            Proyectos realizados
+          </p>
+        </div>
+
+        {/* Bottom Left: Associates Title */}
+        <div className='col-span-4 md:col-span-full  flex flex-col justify-end p-8 md:p-12 min-h-[20vh] md:min-h-[40vh]'>
+          <h3 className='text-mobile-title sm:text-tablet-text lg:text-[3em] font-bold tracking-tighter leading-none'>
+            Asociados de confianza
+          </h3>
+          <div className='col-span-4 md:col-span-6 flex flex-col justify-center overflow-hidden min-h-[30vh] md:min-h-[40vh] py-8'>
+            <div className='w-full mb-8'>
+              <BrandsMarquee
+                brands={brands1}
+                direction='left'
+              />
+            </div>
+            <div className='w-full'>
+              <BrandsMarquee
+                brands={brands2}
+                direction='right'
+              />
+            </div>
           </div>
         </div>
-        <div className='flex align-center  flex-2 border border-dashed border-black/25 flex-col align-center content-center items-center justify-center'>
-          <div className='flex flex-col  items-center  '>
-            <h3 className='font-bold  leading-none  text-tablet-title md:text-[7rem]'>60</h3>
-            <p className='font-Gotham-light '>Dias promedio de entrega</p>
-          </div>
-        </div>
-        <div className='flex align-center  flex-2 border border-dashed border-black/25 flex-col align-center content-center items-center justify-center'>
-          <div className='flex flex-col  items-center  '>
-            <h3 className='font-bold text-mobile-title md:text-[7rem] leading-none'>90</h3>
-            <p className='font-Gotham-light '>Proyectos realizados</p>
-          </div>
-        </div>
-      </div>
-      <div className=' hidden md:flex h-full'>
-        <div className='flex-4 border border-dashed border-black/25'></div>
-        <div className='flex-2 border border-dashed border-black/25'></div>
-        <div className='flex-2 border border-dashed border-black/25'></div>
+
+        {/* Bottom Right: Marquees */}
       </div>
     </section>
   )

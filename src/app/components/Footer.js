@@ -9,22 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 const Footer = () => {
   const footerRef = useRef(null)
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     footerRef.current,
-  //     { opacity: 0, y: 50 },
-  //     {
-  //       opacity: 1,
-  //       y: 0,
-  //       duration: 1,
-  //       ease: 'power2.out',
-  //       scrollTrigger: {
-  //         trigger: footerRef.current,
-  //         start: 'top bottom',
-  //       },
-  //     }
-  //   )
-  // }, [])
+
 
   const columns = [
     {
@@ -72,7 +57,7 @@ const Footer = () => {
             © 2025 SIENNA Modular. All rights reserved.
           </p>
           <p className='pl-8 text-sm text-bllack'>
-            Developer by{' '}
+            Developer by aaj_studio
             <a
               href='https://www.instagram.com/aaj_studio/'
               target='_blank'

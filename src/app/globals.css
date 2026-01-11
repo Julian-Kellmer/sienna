@@ -32,7 +32,9 @@
   --color-foreground: var(--foreground);
   --font-Primary: var(--font-inter);
 
-  --text-web-title: 3em;
+  --text-web-title: 4em;
+  --text-web-small-title: 2.3em;
+
   --text-web-section: 2.5em;
   --text-web-subtitle: 1.3em;
   --text-web-article: 1.1em;
@@ -60,4 +62,52 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Gotham-book', Helvetica, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.fade-mask-x {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.layout-wrap {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .layout-wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .layout-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
 }

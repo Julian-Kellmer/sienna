@@ -68,12 +68,12 @@ const FinalSteps = () => {
         {/* Fila 1 */}
         <div className='w-full flex flex-col lg:flex-row'>
           <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Primeros pasos,
               <br />
               tu proyecto comienza
             </h5>
-            <span className='text-primary/50 text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Con una sola reunión <br /> y una seña del 5%.
             </span>
           </div>
@@ -91,10 +91,10 @@ const FinalSteps = () => {
         {/* Fila 2 */}
         <div className='w-full flex flex-col lg:flex-row-reverse'>
           <div className=' lg:flex-1 p-4 hidden lg:flex flex-col align-end content-end items-end   '>
-            <h5 className='text-web-title font-bold tracking-tight leading-14 max-w-xl'>
+            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-xl'>
               Diseñamos tu espacio y lo hacemos oficial
             </h5>
-            <span className='text-primary/50 text-web-title font-bold tracking-tight leading-14 min-w-xl'>
+            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 min-w-xl'>
               Se firma y se Confirma
             </span>
           </div>
@@ -112,10 +112,10 @@ const FinalSteps = () => {
         {/* Fila 3 */}
         <div className='w-full flex flex-col lg:flex-row'>
           <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Supervisamos cada detalle
             </h5>
-            <span className='text-primary/50 text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Desde el día uno <br /> hasta que tu proyecto esté terminado.
             </span>
           </div>
@@ -136,10 +136,10 @@ const FinalSteps = () => {
             <GlassCard {...pasos[6]} />
           </div>
           <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Transporte e instalación
             </h5>
-            <span className='text-primary/50 text-web-title font-bold tracking-tight leading-14 max-w-2xl'>
+            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
               Tu proyecto listo para habitar.
             </span>
           </div>
