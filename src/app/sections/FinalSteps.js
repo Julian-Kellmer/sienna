@@ -58,11 +58,13 @@ const pasos = [
 
 const FinalSteps = () => {
   return (
-    <section className='bg-white w-full flex flex-col gap-10 px-4 lg:px-16 md:pb-16'>
-      <div className='border border-black/25 p-8'>
-        <h2 className='font-bold text-web-section text-black'></h2>
-        <p className='text-web-body max-w-2xl'></p>
-      </div>
+    <section
+      id='pasos'
+      className='bg-white w-full flex flex-col gap-10 px-4 lg:px-16 md:pb-16'>
+      <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-[3em] font-bold text-primary'>
+              Siempre cumplimos  <br />
+              <span className='text-primary/75'> Con lo que te prometemos</span>
+            </h1>
 
       <div className='w-full flex flex-col gap-24'>
         {/* Fila 1 */}

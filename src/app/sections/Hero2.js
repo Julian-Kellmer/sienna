@@ -23,8 +23,8 @@ const Hero2 = () => {
       {/* Header Section */}
       <div className='layout-grid'>
         {/* Title */}
-        <div className='col-span-4 md:col-start-2 md:col-span-10 flex flex-col gap-6 md:gap-8 mt-24'>
-          <h1 className='max-w-1/2 text-mobile-title sm:text-tablet-title lg:text-web-title font-bold text-primary tracking-tighter leading-none'>
+        <div className='col-span-full md:col-start-2 md:col-span-10 flex flex-col gap-6 md:gap-8 mt-24'>
+          <h1 className='md:max-w-1/2 text-mobile-title sm:text-tablet-title lg:text-web-title font-bold text-primary tracking-tighter leading-none'>
             Redefinimos la experiencia de la construcción.
           </h1>
 
@@ -45,7 +45,7 @@ const Hero2 = () => {
           {slides.map((src, index) => (
             <div
               key={index}
-              className='flex-[0_0_100%] md:flex-[0_0_83.33%] min-w-0 relative h-[50vh] md:h-[70vh] pl-6 md:pl-[24px]'>
+              className='flex-[0_0_100%] md:flex-[0_0_83.33%] min-w-0 relative h-[50vh] md:h-[80vh] pl-6 md:pl-[24px]'>
               <img
                 src={src}
                 alt={`Slide ${index}`}

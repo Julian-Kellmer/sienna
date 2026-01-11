@@ -26,7 +26,6 @@ export default function RootLayout({ children }) {
         sizes='<generated>'
       />
       <body className={` ${inter.variable}  antialiased relative `}>
-        <LoadingPage />
         <Header />
         {children}
       </body>

@@ -21,13 +21,13 @@ const Metrics = () => {
     <section className='layout-wrap flex-col w-full min-h-screen relative py-12 md:py-0 flex justify-center'>
       <div className='layout-grid h-full'>
         {/* Top Left: Main Text */}
-        <div className='col-span-4 md:col-span-6  flex flex-col justify-center p-8 md:p-16 gap-4 min-h-[40vh] md:min-h-[50vh]'>
+        <div className='col-span-4 md:col-span-6  flex flex-col justify-center  md:p-16 gap-4 md:min-h-[40vh] md:min-h-[50vh]'>
           <h3 className='text-mobile-title sm:text-tablet-text lg:text-[3em] font-bold tracking-tighter leading-none'>
             Un mejor futuro arranca <br />{' '}
             <span className='text-primary/50'>en nuestra fabrica</span>
           </h3>
           <p className='font-Gotham-light text-mobile-body max-w-sm'>
-            En Sienna nos aseguramos que tengas la mejor experiencia
+            En Sienna nos aseguramos que tengas la mejor experiencia y eso tambien es gracias a que trabajamos con los mejores proveedores
           </p>
         </div>
 
@@ -35,8 +35,8 @@ const Metrics = () => {
         <div className='col-span-2 md:col-span-3  flex flex-col items-center justify-center p-4 min-h-[25vh] md:min-h-[50vh]'>
           <RollingNumber
             number={60}
-            textClassName='font-bold leading-none text-tablet-title md:text-[7rem]'
-            itemHeightClassName='h-[2.3em] md:h-[7rem]'
+            textClassName='font-bold leading-none text-[5rem] md:text-[7rem]'
+            itemHeightClassName='h-[5rem] md:h-[7rem]'
           />
           <p className='font-Gotham-light text-center text-sm md:text-base'>
             Dias promedio de entrega
@@ -47,8 +47,8 @@ const Metrics = () => {
         <div className='col-span-2 md:col-span-3  flex flex-col items-center justify-center p-4 min-h-[25vh] md:min-h-[50vh]'>
           <RollingNumber
             number={90}
-            textClassName='font-bold text-mobile-title md:text-[7rem] leading-none'
-            itemHeightClassName='h-[1.8em] md:h-[7rem]'
+            textClassName='font-bold leading-none text-[5rem] md:text-[7rem]'
+            itemHeightClassName='h-[5rem] md:h-[7rem]'
           />
           <p className='font-Gotham-light text-center text-sm md:text-base'>
             Proyectos realizados
@@ -56,12 +56,12 @@ const Metrics = () => {
         </div>
 
         {/* Bottom Left: Associates Title */}
-        <div className='col-span-4 md:col-span-full  flex flex-col justify-end p-8 md:p-12 min-h-[20vh] md:min-h-[40vh]'>
-          <h3 className='text-mobile-title sm:text-tablet-text lg:text-[3em] font-bold tracking-tighter leading-none'>
+        <div className='col-span-4 md:col-span-full  flex flex-col justify-end md:p-12 min-h-[20vh] md:min-h-[40vh]'>
+          <h3 className='hidden  text-mobile-title sm:text-tablet-text lg:text-[3em] font-bold tracking-tighter leading-none'>
             Asociados de confianza
           </h3>
           <div className='col-span-4 md:col-span-6 flex flex-col justify-center overflow-hidden min-h-[30vh] md:min-h-[40vh] py-8'>
-            <div className='w-full mb-8'>
+            <div className='w-full '>
               <BrandsMarquee
                 brands={brands1}
                 direction='left'

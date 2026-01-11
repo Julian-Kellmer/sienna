@@ -1,10 +1,20 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react'
+import { ArrowRight } from 'lucide-react'
 import proyectos from '../mockdata/proyectos'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 
 const Proyect2 = () => {
   const [proyectosConDims, setProyectosConDims] = useState([])
   const carouselRef = useRef(null)
+
+  // Embla hooks
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'center', slidesToScroll: 1 },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  )
+
   const [device, setDevice] = useState('desktop')
 
   // Detectar dispositivo
@@ -113,14 +123,14 @@ const Proyect2 = () => {
   const MAX_HEIGHT_MOBILE = 550
 
   return (
-    <section>
+    <section id='proyectos'>
       <div className='flex flex-col'>
-        {/* Títulos */}
-        <div className='flex w-full lg:px-24 border-t border-b border-black/25'>
+        {/* Títulos y Filtros */}
+        <div className='flex flex-col w-full lg:px-24 mb-12'>
           <div className='flex w-full'>
             <div
               id='titulos'
-              className='md:flex-12 flex h-full px-8 py-16 gap-4'>
+              className='md:flex-12 flex h-full px-8 pt-16 pb-8 gap-4'>
               <h2 className='title font-bold tracking-tight text-primary leading-none text-mobile-title md:text-tablet-title md:max-w-3xl md:px-32 lg:text-[3em]'>
                 Nuestros últimos{' '}
                 <span className='text-primary/50'>Proyectos</span>
@@ -128,26 +138,30 @@ const Proyect2 = () => {
             </div>
             <div className='flex-7'></div>
           </div>
+
+          {/* Filtros */}
+          <div className='px-8 md:px-[calc(8rem+4px+2rem)] flex flex-wrap gap-4'>
+            {['Ver todos', 'Viviendas', 'Oficinas', 'Turismo'].map((cat) => (
+              <button
+                key={cat}
+                className={`px-6 py-2 rounded-full border border-black/10 text-sm font-Gotham-book hover:bg-black/5 transition-colors ${
+                  cat === 'Ver todos'
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-transparent text-primary'
+                }`}>
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Carrusel */}
         {device === 'mobile' ? (
-          // Mobile: carrusel con flechas
-          <div className='relative w-full overflow-hidden'>
-            {/* Flecha izquierda */}
-            <button
-              onClick={() => {
-                carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' })
-              }}
-              className='absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 text-white rounded-full'>
-              ‹
-            </button>
-
-            {/* Carrusel scrollable */}
-            <div
-              ref={carouselRef}
-              className='flex gap-4 overflow-x-auto scroll-smooth py-4 px-2'
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          // Mobile: Embla Carousel
+          <div
+            className='relative w-full overflow-hidden'
+            ref={emblaRef}>
+            <div className='flex gap-4 py-8 pl-4'>
               {proyectosConDims.map((project) => {
                 const scaleX = MAX_WIDTH_MOBILE / project.width
                 const scaleY = MAX_HEIGHT_MOBILE / project.height
@@ -156,36 +170,46 @@ const Proyect2 = () => {
                 return (
                   <div
                     key={project.id}
-                    className='flex-shrink-0  rounded-lg'
-                    style={{ width, height }}>
-                    <img
-                      src={project.images?.[0] || '/casas/S205/1.png'}
-                      alt={`Proyecto ${project.id}`}
-                      className='w-full h-full object-cover'
-                    />
-                    <h2 className='font-Gotham-light text-2xl font-bold'>
-                      {project.nombre}
-                    </h2>
-                    <a href={`/proyectos/${project.id}`}>Ver más</a>
+                    className='flex-[0_0_auto] flex flex-col gap-4 mx-2'
+                    style={{ width }}>
+                    <div
+                      style={{ height }}
+                      className='rounded-lg overflow-hidden relative shadow-md'>
+                      <img
+                        src={project.images?.[0] || '/casas/S205/1.png'}
+                        alt={`Proyecto ${project.id}`}
+                        className='w-full h-full object-cover'
+                      />
+                    </div>
+
+                    <div className='flex items-center justify-between px-1'>
+                      <div>
+                        <h2 className='font-Gotham-medium text-2xl text-primary font-bold'>
+                          {project.nombre}
+                        </h2>
+                        <p className='text-primary/60 font-Gotham-book text-sm uppercase tracking-wider'>
+                          S66
+                        </p>
+                      </div>
+                      <a
+                        href={`/proyectos/${project.id}`}
+                        className='group flex items-center justify-center w-12 h-8 border border-black/20 rounded-full hover:bg-primary hover:text-white hover:border-transparent transition-all duration-300'>
+                        <ArrowRight
+                          size={18}
+                          className='text-current transition-colors'
+                        />
+                      </a>
+                    </div>
                   </div>
                 )
               })}
             </div>
-
-            {/* Flecha derecha */}
-            <button
-              onClick={() => {
-                carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' })
-              }}
-              className='absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 text-white rounded-full'>
-              ›
-            </button>
           </div>
         ) : (
           // Desktop/Tablet: carrusel drag
           <div
             ref={carouselRef}
-            className='carruselContainer flex items-end gap-24 border-b border-black/25 overflow-x-hidden cursor-grab'
+            className='carruselContainer flex items-end gap-24  overflow-x-hidden cursor-grab'
             onMouseDown={onMouseDown}
             onMouseLeave={onMouseLeave}
             onMouseUp={onMouseUp}
@@ -207,20 +231,35 @@ const Proyect2 = () => {
               return (
                 <div
                   key={project.id}
-                  className='px-4 py-8  flex flex-col items-start flex-shrink-0'>
+                  className='px-4 py-8 flex flex-col items-start flex-shrink-0 gap-4'>
                   <div
                     style={{ width, height }}
                     className='overflow-hidden '>
                     <img
                       src={project.images?.[0] || '/casas/S205/1.png'}
                       alt={`Proyecto ${project.id}`}
-                      className='w-full h-full object-cover user-select-none pointer-events-none'
+                      className='w-full h-full object-cover user-select-none pointer-events-none grayscale-[20%] hover:grayscale-0 transition-all duration-500'
                     />
                   </div>
-                  <h2 className='font-Gotham-light text-2xl font-bold'>
-                    {project.nombre}
-                  </h2>
-                  <a href={`/proyectos/${project.id}`}>Ver más</a>
+
+                  <div className='w-full flex items-center justify-between mt-2'>
+                    <div>
+                      <h2 className='font-Gotham-medium text-2xl text-primary font-bold'>
+                        {project.nombre}
+                      </h2>
+                      <p className='text-primary/60 font-Gotham-book text-sm uppercase tracking-wider'>
+                        S66
+                      </p>
+                    </div>
+                    <a
+                      href={`/proyectos/${project.id}`}
+                      className='group flex items-center justify-center w-14 h-8 border border-black/20 rounded-full hover:bg-primary hover:text-white hover:border-transparent transition-all duration-300'>
+                      <ArrowRight
+                        size={20}
+                        className='text-current transition-colors'
+                      />
+                    </a>
+                  </div>
                 </div>
               )
             })}
