@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-const ContactButton = ({ text = 'Contactanos', onClick, className = '' }) => {
+const ContactButton = ({ text = 'Agenda tu reunión', onClick, className = '' }) => {
   return (
     <button
       onClick={onClick}

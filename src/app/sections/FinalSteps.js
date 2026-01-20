@@ -13,14 +13,14 @@ const pasos = [
     numero: '02',
     titulo: 'Seña inicial del 15%',
     descripcion:
-      'Concretamos tu compromiso y comenzamos con el desarrollo del proyecto técnico.',
+      'Con una seña del 5%, comenzamos a trabajar en el proyecto con nuestro equipo de arquitectos. (Incluye diseño personalizado, asesoramiento técnico y definición de materiales) ⏳Duración estimada: 1 mes',
     foto: '/lastSteps/2.jpg',
   },
   {
     numero: '03',
     titulo: 'Entrega del proyecto de arquitectura',
     descripcion:
-      'Te presentamos propuestas conforme a tus requerimientos. Las revisás y validás antes de avanzar.',
+      'Te presentamos el proyecto completo: planos, distribución, visuales y elección de terminaciones. Listo para validar y avanzar.',
     foto: '/images/background.jpg',
     video: '/lastSteps/3.mp4',
   },
@@ -36,14 +36,14 @@ const pasos = [
     numero: '05',
     titulo: 'Control de avance de obra',
     descripcion:
-      'A lo largo del proceso, te mostramos cómo avanza todo y validamos juntos cada hito.',
+      'A los 45 días del inicio en fábrica, realizás el segundo pago del 40%. Podés seguir el avance con fotos, visitas o video.',
     foto: '/lastSteps/5.jpg',
   },
   {
     numero: '06',
     titulo: 'Finalización y entrega',
     descripcion:
-      'Entregamos la obra al finalizar con checklist de calidad y entrega oficial.',
+      'Finalizamos la obra en planta y coordinamos la entrega. Se abona el 10% restante contra entrega. Tiempo total desde el inicio en fábrica: entre 60 y 90 días',
     foto: '/images/background.jpg',
     video: '/lastSteps/66.mp4',
   },
@@ -51,7 +51,7 @@ const pasos = [
     numero: '07',
     titulo: 'Transporte e instalación',
     descripcion:
-      'Traslado al terreno y armado con nuestro equipo técnico. Todo coordinado contigo.',
+      'Transportamos e instalamos en destino. Coordinamos transporte, grúa y conexión final.',
     foto: '/lastSteps/7png.png',
   },
 ]
@@ -60,90 +60,46 @@ const FinalSteps = () => {
   return (
     <section
       id='pasos'
-      className='bg-white w-full flex flex-col gap-10 px-4 lg:px-16 md:pb-16'>
-      <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-[3em] font-bold text-primary'>
-              Siempre cumplimos  <br />
-              <span className='text-primary/75'> Con lo que te prometemos</span>
+      className='bg-secondary w-full flex flex-col gap-12 md:gap-16 px-4 lg:px-16 py-12 md:py-24'>
+      {/* Título */}
+      <div className='layout-wrap'>
+        <div className='layout-grid'>
+          <div className='col-span-4 md:col-span-10'>
+            <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-[3em] font-bold text-primary'>
+              Siempre cumplimos <br />
+              <span className='text-primary/75'>Con lo que te prometemos</span>
             </h1>
-
-      <div className='w-full flex flex-col gap-24'>
-        {/* Fila 1 */}
-        <div className='w-full flex flex-col lg:flex-row'>
-          <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Primeros pasos,
-              <br />
-              tu proyecto comienza
-            </h5>
-            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Con una sola reunión <br /> y una seña del 5%.
-            </span>
-          </div>
-          <div className='flex-1 flex flex-col sm:flex-row  gap-6'>
-            {pasos.slice(0, 2).map((paso) => (
-              <div
-                className='w-full sm:w-[48%]'
-                key={paso.numero}>
-                <GlassCard {...paso} />
-              </div>
-            ))}
           </div>
         </div>
+      </div>
 
-        {/* Fila 2 */}
-        <div className='w-full flex flex-col lg:flex-row-reverse'>
-          <div className=' lg:flex-1 p-4 hidden lg:flex flex-col align-end content-end items-end   '>
-            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-xl'>
-              Diseñamos tu espacio y lo hacemos oficial
-            </h5>
-            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 min-w-xl'>
-              Se firma y se Confirma
-            </span>
+      {/* Primera Fila: Items 1-4 */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+        {pasos.slice(0, 4).map((paso) => (
+          <div
+            key={paso.numero}
+            className='w-full'>
+            <GlassCard {...paso} />
           </div>
-          <div className='flex-1 flex flex-col sm:flex-row  gap-6'>
-            {pasos.slice(2, 4).map((paso) => (
-              <div
-                className='w-full sm:w-[48%]'
-                key={paso.numero}>
-                <GlassCard {...paso} />
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
+      </div>
 
-        {/* Fila 3 */}
-        <div className='w-full flex flex-col lg:flex-row'>
-          <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Supervisamos cada detalle
-            </h5>
-            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Desde el día uno <br /> hasta que tu proyecto esté terminado.
-            </span>
+      {/* Segunda Fila: Items 5-7 + Texto */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+        {pasos.slice(4, 7).map((paso) => (
+          <div
+            key={paso.numero}
+            className='w-full'>
+            <GlassCard {...paso} />
           </div>
-          <div className='md:flex-1 flex flex-col sm:flex-row  gap-6'>
-            {pasos.slice(4, 6).map((paso) => (
-              <div
-                className='w-full sm:w-[48%]'
-                key={paso.numero}>
-                <GlassCard {...paso} />
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
 
-        {/* Fila 4 */}
-        <div className='w-full flex flex-col lg:flex-row'>
-          <div className='flex-1 w-full'>
-            <GlassCard {...pasos[6]} />
-          </div>
-          <div className='lg:flex-1 p-4 hidden lg:block'>
-            <h5 className='text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Transporte e instalación
-            </h5>
-            <span className='text-primary/50 text-[3em] font-bold tracking-tight leading-14 max-w-2xl'>
-              Tu proyecto listo para habitar.
-            </span>
+        {/* Texto final donde estaría el item 8 */}
+        <div className='w-full flex items-center justify-center p-8 md:p-12 '>
+          <div className='text-center'>
+            <h3 className='text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight'>
+              Con entrega llave en mano, tu proyecto está listo para habitar
+            </h3>
           </div>
         </div>
       </div>

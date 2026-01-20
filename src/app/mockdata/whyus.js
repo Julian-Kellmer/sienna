@@ -59,7 +59,7 @@ const info = [
   {
     title: 'Garantia y respaldo profesional',
     subtitle:
-      'Cada proyecto Sienna cuenta con garantía formal, soporte postventa y acompañamiento profesional. No vendemos solo un producto, sino una solucion integral con compromiso a largo plazo.',
+      'Cada proyecto SIENNA cuenta con garantía formal, soporte postventa y acompañamiento profesional. No vendemos solo un producto, sino una solucion integral con compromiso a largo plazo.',
     icon: '/icons/Garant.svg',
     image: '/images/background.jpg',
   },

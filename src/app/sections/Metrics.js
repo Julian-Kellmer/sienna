@@ -27,7 +27,7 @@ const Metrics = () => {
             <span className='text-primary/50'>en nuestra fabrica</span>
           </h3>
           <p className='font-Gotham-light text-mobile-body max-w-sm'>
-            En Sienna nos aseguramos que tengas la mejor experiencia y eso tambien es gracias a que trabajamos con los mejores proveedores
+            En SIENNA nos aseguramos que tengas la mejor experiencia y eso tambien es gracias a que trabajamos con los mejores proveedores
           </p>
         </div>
 

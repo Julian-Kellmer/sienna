@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const lines = [
   'Arquitectura que transforma espacios.',
   'Diseños que inspiran el habitar.',
-  'Sienna Modular',
+  'SIENNA Modular',
 ]
 
 const container = {

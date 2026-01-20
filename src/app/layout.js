@@ -11,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Sienna modular',
+  title: 'SIENNA modular',
   description: 'Constructora de Modulos ',
-  icons: { icon: '/images/Logo.svg' },
+  icons: { icon: './LogoConFondo.svg' },
 }
 
 export default function RootLayout({ children }) {

@@ -12,9 +12,19 @@ import ContactButton from './Reusables/ContactButton'
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
-  const handleScroll = (e, id) => {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavScroll = (e, id) => {
     e.preventDefault()
     if (pathname === '/') {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -23,17 +33,15 @@ const Header = () => {
     }
   }
 
-  if (pathname.startsWith('/proyectos/')) {
-    return null
-  }
   return (
     <>
-      <header className={`fixed left-0 z-50 w-full flex justify-center `}>
+      <header
+        className={`fixed top-0 left-0 z-50 w-full flex justify-center transition-all duration-300 bg-secondary/80  backdrop-blur-xs `}>
         <div className={`layout-wrap flex items-center justify-between py-4`}>
           <div className='flex items-center'>
             <a href='/'>
               <img
-                src='/images/siennalogo.svg'
+                src='/Logo.svg'
                 alt='Logo Sienna'
                 className='h-8 md:h-10'
               />
@@ -46,35 +54,35 @@ const Header = () => {
                 <li>
                   <a
                     href='/'
-                    onClick={(e) => handleScroll(e, 'inicio')}>
+                    onClick={(e) => handleNavScroll(e, 'inicio')}>
                     Inicio
                   </a>
                 </li>
                 <li>
                   <a
                     href='/'
-                    onClick={(e) => handleScroll(e, 'nosotros')}>
+                    onClick={(e) => handleNavScroll(e, 'nosotros')}>
                     Nosotros
                   </a>
                 </li>
                 <li>
                   <a
                     href='/'
-                    onClick={(e) => handleScroll(e, 'proyectos')}>
+                    onClick={(e) => handleNavScroll(e, 'proyectos')}>
                     Proyectos
                   </a>
                 </li>
                 <li>
                   <a
                     href='/contact'
-                    onClick={(e) => handleScroll(e, 'contact')}>
+                    onClick={(e) => handleNavScroll(e, 'contact')}>
                     Kontakt
                   </a>
                 </li>
               </ul>
             </nav>
             <ContactButton
-              text='Download Brochure'
+              text='Descargar Brochure'
               className='!px-6 !py-2 text-xs'
             />
           </div>
@@ -126,7 +134,7 @@ const Header = () => {
                     <a
                       href='#proyectos'
                       onClick={(e) => {
-                        handleScroll(e, 'proyectos')
+                        handleNavScroll(e, 'proyectos')
                         setMenuOpen(false)
                       }}>
                       Proyectos
@@ -136,7 +144,7 @@ const Header = () => {
                     <a
                       href='#nosotros'
                       onClick={(e) => {
-                        handleScroll(e, 'nosotros')
+                        handleNavScroll(e, 'nosotros')
                         setMenuOpen(false)
                       }}>
                       Sobre nosotros
@@ -146,7 +154,7 @@ const Header = () => {
                     <a
                       href='#pasos'
                       onClick={(e) => {
-                        handleScroll(e, 'pasos')
+                        handleNavScroll(e, 'pasos')
                         setMenuOpen(false)
                       }}>
                       Pasos
@@ -156,7 +164,7 @@ const Header = () => {
                     <a
                       href='#contact'
                       onClick={(e) => {
-                        handleScroll(e, 'contact')
+                        handleNavScroll(e, 'contact')
                         setMenuOpen(false)
                       }}>
                       Contacto

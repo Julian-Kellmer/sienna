@@ -37,7 +37,6 @@ export default function Home() {
         <Proyect2 />
 
         <Metrics />
-        {/* <History /> */}
         <FinalSteps />
         <Footer />
       </div>

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  --background: white;
+  --background: #e0ded6;
   --foreground: #4c454a;
 }
 
@@ -50,8 +50,8 @@
   --text-tablet-article: 1em;
   --text-tablet-body: 0.975em;
 
-  --color-primary: #4c454a;
-  --color-secondary: #e8e0d8;
+  --color-primary: #4c4449;
+  --color-secondary: #e0ded6;
 
   --font-book: 'Gotham-book';
   --font-medium: 'Gotham-medium';

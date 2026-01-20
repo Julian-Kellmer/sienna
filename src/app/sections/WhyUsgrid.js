@@ -20,7 +20,7 @@ const WhyUs = () => {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
-        end: 'bottom bottom',
+        end: 'bottom 40%',
         pin: leftColRef.current,
         pinSpacing: false,
       })
@@ -33,7 +33,7 @@ const WhyUs = () => {
     <section
       id='nosotros'
       ref={containerRef}
-      className='whyUs layout-wrap relative py-12 md:py-24'>
+      className='whyUs layout-wrap relative py-12 md:pt-24 '>
       <div className='layout-grid h-full items-start'>
         {/* Left Column - Pinned */}
         <div
@@ -45,7 +45,7 @@ const WhyUs = () => {
               <span className='text-primary/75'> mejor opción</span>
             </h1>
             <p className='font-Gotham-light text-mobile-body text-primary/80'>
-              En Sienna nuestra prioridad siempre sos vos.
+              En SIENNA nuestra prioridad siempre sos vos.
             </p>
             <div className='flex'>
               <ContactButton text='Descargar Brochure' />
@@ -56,11 +56,11 @@ const WhyUs = () => {
         {/* Right Column - Scrollable List */}
         <div
           ref={rightColRef}
-          className='col-span-4 md:col-start-7 md:col-span-5 flex flex-col '>
+          className='col-span-4 md:col-start-7 md:col-span-5 flex flex-col  gap-8 '>
           {info.map((item, index) => (
             <div
               key={index}
-              className='flex flex-col gap-4 py-8 md:py-16 border-b border-black/10 last:border-b-0 min-h-[30vh] justify-center'>
+              className='flex flex-col gap-4 border-b border-black/10 last:border-b-0 justify-start py-4'>
               <img
                 className='w-8 h-8 md:w-12 md:h-12'
                 src={item.icon}

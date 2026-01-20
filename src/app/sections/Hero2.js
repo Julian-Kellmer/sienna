@@ -7,7 +7,7 @@ import Autoplay from 'embla-carousel-autoplay'
 const Hero2 = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'center' },
-    [Autoplay({ delay: 4000 })]
+    [Autoplay({ delay: 4000 })],
   )
 
   // Placeholder images for the carousel
@@ -19,25 +19,28 @@ const Hero2 = () => {
   ]
 
   return (
-    <section className='layout-wrap relative flex-col w-full h-auto min-h-screen py-12 md:py-24 flex gap-12 md:gap-24'>
-      {/* Header Section */}
-      <div className='layout-grid'>
-        {/* Title */}
-        <div className='col-span-full md:col-start-2 md:col-span-10 flex flex-col gap-6 md:gap-8 mt-24'>
-          <h1 className='md:max-w-1/2 text-mobile-title sm:text-tablet-title lg:text-web-title font-bold text-primary tracking-tighter leading-none'>
-            Redefinimos la experiencia de la construcción.
-          </h1>
+    <section className='min-h-screen'>
+      <section className='layout-wrap relative flex-col w-full h-auto  py-12 md:py-24 flex gap-12 md:gap-24'>
+        {/* Header Section */}
+        <div className='layout-grid'>
+          {/* Title */}
+          <div className='col-span-full md:col-start-2 md:col-span-10 flex flex-col gap-6 md:gap-8 mt-24'>
+            <h1 className='md:max-w-1/2 text-mobile-title sm:text-tablet-title lg:text-web-title font-bold text-primary tracking-tighter leading-none'>
+              Redefinimos la experiencia de la{' '}
+              <span className='text-primary/50 '>construcción.</span>
+            </h1>
 
-          <div className='flex flex-col md:flex-row justify-between items-start md:items-end gap-8 w-full'>
-            <p className='font-Gotham-light text-mobile-body md:text-tablet-body max-w-md text-primary'>
-              Diseño a medida, calidad garantizada y entregas en tiempo récord.
-            </p>
-            <ContactButton />
+            <div className='flex flex-col md:flex-row justify-between items-start md:items-end gap-8 w-full'>
+              <p className='font-Gotham-light text-mobile-body md:text-tablet-body max-w-md text-primary'>
+                Diseño a medida, calidad garantizada y entregas en tiempo
+                récord.
+              </p>
+              <ContactButton />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Carousel Section */}
       <div
         className='w-full overflow-hidden'
         ref={emblaRef}>

@@ -42,7 +42,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className='bg-white text-black md:px-6 md:py-16 pt-8'>
+      className='bg-secondary text-black md:px-6 md:py-16 pt-8'>
       <div className='w-full md:px-24 pb-32  mx-auto gap-8 flex md:flex-row flex-col'>
         <div className='logo-container flex flex-1  flex-col'>
           <div className='relative w-screen h-24 md:w-120 md:h-36 mb-4'>
