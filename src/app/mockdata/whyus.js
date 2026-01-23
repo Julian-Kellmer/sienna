@@ -14,7 +14,7 @@ const info = [
     image: '/bestShowcases/GaleriaNoche.png',
   },
   {
-    title: 'Diseño personalizado junto a nuestros arquitectos',
+    title: 'Diseño personalizado',
     subtitle:
       'Cada proyecto se adapta a las necesidades y estilo de vida del cliente, con el acompañamiento de nuestro equipo de arquitectos.',
     icon: '/icons/casa.svg',

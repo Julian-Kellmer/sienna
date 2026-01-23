@@ -11,7 +11,7 @@ const pasos = [
   },
   {
     numero: '02',
-    titulo: 'Seña inicial del 15%',
+    titulo: 'Seña inicial del 5%',
     descripcion:
       'Con una seña del 5%, comenzamos a trabajar en el proyecto con nuestro equipo de arquitectos. (Incluye diseño personalizado, asesoramiento técnico y definición de materiales) ⏳Duración estimada: 1 mes',
     foto: '/images/background.jpg',
