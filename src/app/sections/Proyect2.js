@@ -4,6 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import proyectos from '../mockdata/proyectos'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import BrochureButton from '../components/Reusables/BrochureButton'
 
 const Proyect2 = () => {
   const [proyectosConDims, setProyectosConDims] = useState([])
@@ -188,11 +189,17 @@ const Proyect2 = () => {
         {/* Títulos y Filtros */}
         <div className='layout-wrap mb-12'>
           <div className='layout-grid'>
-            <div className='col-span-4 md:col-start-2 md:col-span-10 pt-16 pb-8'>
+            <div className='col-span-4 md:col-start-2 md:col-span-10 pt-16 pb-8 gap-8 flex flex-col '>
               <h2 className='title font-bold tracking-tight text-primary leading-none text-mobile-title md:text-tablet-title lg:text-[3em]'>
                 Nuestros últimos{' '}
                 <span className='text-primary/50'>Proyectos</span>
               </h2>
+              <div className='flex justify-start'>
+                <BrochureButton
+                  text='Descarga nuestro brochure'
+                  light={false}
+                />
+              </div>
             </div>
 
             {/* Filtros */}
@@ -257,14 +264,6 @@ const Proyect2 = () => {
                             {project.m2}M²
                           </p>
                         </div>
-                        {/* <a
-                          href={`/proyectos/${project.id}`}
-                          className='group flex items-center justify-center w-12 h-8 border border-black/20 rounded-full hover:bg-primary hover:text-white hover:border-transparent transition-all duration-300'>
-                          <ArrowRight
-                            size={18}
-                            className='text-current transition-colors'
-                          />
-                        </a> */}
                       </div>
                     </div>
                   )

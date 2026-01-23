@@ -18,7 +18,7 @@ const BrandsMarquee = ({ brands = [], direction = 'left' }) => {
         {loopedBrands.map((src, index) => (
           <div
             key={index}
-            className={`flex items-center justify-center mx-8 w-[250px] md:w-[200px] h-[150px] grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}>
+            className={`flex items-center justify-center mx-8 w-[250px] md:w-[200px] h-[150px] grayscale opacity-70 `}>
             <img
               src={src}
               alt={`Brand ${index}`}

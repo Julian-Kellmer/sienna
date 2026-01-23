@@ -9,6 +9,7 @@ const WhyUs = () => {
   const containerRef = useRef(null)
   const leftColRef = useRef(null)
   const rightColRef = useRef(null)
+  const infoblockref = useRef([])
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -24,6 +25,25 @@ const WhyUs = () => {
         pin: leftColRef.current,
         pinSpacing: false,
       })
+    })
+
+    // Animate info blocks on scroll
+    infoblockref.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%', // Starts when top of element hits 85% of viewport height
+            toggleActions: 'play none none reverse',
+          },
+        },
+      )
     })
 
     return () => mm.revert()
@@ -48,7 +68,11 @@ const WhyUs = () => {
               En SIENNA nuestra prioridad siempre sos vos.
             </p>
             <div className='flex'>
-              <ContactButton text='Descargar Brochure' />
+              <ContactButton
+                light={false}
+                calendly={true}
+                text='Agenda tu reunión'
+              />
             </div>
           </div>
         </div>
@@ -59,6 +83,7 @@ const WhyUs = () => {
           className='col-span-4 md:col-start-7 md:col-span-5 flex flex-col  gap-8 '>
           {info.map((item, index) => (
             <div
+              ref={(el) => (infoblockref.current[index] = el)}
               key={index}
               className='flex flex-col gap-4 border-b border-black/10 last:border-b-0 justify-start py-4'>
               <img

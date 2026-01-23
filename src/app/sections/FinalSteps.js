@@ -14,7 +14,8 @@ const pasos = [
     titulo: 'Seña inicial del 15%',
     descripcion:
       'Con una seña del 5%, comenzamos a trabajar en el proyecto con nuestro equipo de arquitectos. (Incluye diseño personalizado, asesoramiento técnico y definición de materiales) ⏳Duración estimada: 1 mes',
-    foto: '/lastSteps/2.jpg',
+    foto: '/images/background.jpg',
+    video: '/lastSteps/4.mp4',
   },
   {
     numero: '03',
@@ -28,9 +29,8 @@ const pasos = [
     numero: '04',
     titulo: 'Firma del contrato y conexión con fábrica',
     descripcion:
-      'Una vez aprobado el proyecto, firmamos el contrato de obra y lo enviamos a fábrica con una seña del 60%.',
-    foto: '/images/background.jpg',
-    video: '/lastSteps/4.mp4',
+      'Una vez aprobado el proyecto, firmamos el contrato y comenzamos la producción en planta. Se completa el anticipo hasta el 50% con un nuevo pago del 45%. ⏳Duración estimada: 1 mes',
+    foto: '/lastSteps/2.jpg',
   },
   {
     numero: '05',
@@ -60,14 +60,14 @@ const FinalSteps = () => {
   return (
     <section
       id='pasos'
-      className='bg-secondary w-full flex flex-col gap-12 md:gap-16 px-4 lg:px-16 py-12 md:py-24'>
+      className='bg-secondary w-full flex flex-col gap-12 md:gap-16 px-4 lg:px-16 py-12 md:py-12'>
       {/* Título */}
       <div className='layout-wrap'>
         <div className='layout-grid'>
           <div className='col-span-4 md:col-span-10'>
             <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-[3em] font-bold text-primary'>
-              Siempre cumplimos <br />
-              <span className='text-primary/75'>Con lo que te prometemos</span>
+              Un proceso claro para <br />
+              <span className='text-primary/75'>desarrollar tu proyecto</span>
             </h1>
           </div>
         </div>

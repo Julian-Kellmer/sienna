@@ -82,8 +82,9 @@ const Header = () => {
               </ul>
             </nav>
             <ContactButton
-              text='Descargar Brochure'
-              className='!px-6 !py-2 text-xs'
+              text='Contactanos'
+              light={false}
+              calendly={false}
             />
           </div>
 
@@ -112,7 +113,7 @@ const Header = () => {
 
             {/* PANEL DESLIZANTE */}
             <motion.div
-              className='fixed top-0 right-0 w-3/4 max-w-sm h-full bg-white z-50 px-6 py-8 flex flex-col justify-between'
+              className='fixed top-0 right-0 w-3/4 max-w-sm h-full bg-primary z-50 px-6 py-8 flex flex-col justify-between'
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -121,7 +122,7 @@ const Header = () => {
               <div className='flex justify-end mb-6'>
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className='text-black'
+                  className='text-secondary'
                   aria-label='Cerrar menú'>
                   <X size={24} />
                 </button>
@@ -129,7 +130,7 @@ const Header = () => {
 
               {/* Navegación */}
               <nav>
-                <ul className='flex flex-col gap-6 text-lg font-light text-black'>
+                <ul className='flex flex-col gap-6 text-lg font-light text-secondary'>
                   <li>
                     <a
                       href='#proyectos'
@@ -174,8 +175,11 @@ const Header = () => {
               </nav>
 
               {/* Botón */}
-              <div className='mt-10'>
-                <ContactButton text='Download Brochure' />
+              <div className='mt-10 text-secondary '>
+                <ContactButton
+                  text='Descargar Brochure'
+                  light={true}
+                />
               </div>
             </motion.div>
           </>

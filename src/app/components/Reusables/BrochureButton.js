@@ -1,36 +1,18 @@
 'use client'
 import React from 'react'
 
-const ContactButton = ({ text, className = '', light = true, calendly }) => {
+const ContactButton = ({ text = 'Descargar Brochure', light }) => {
   // When light=true: secondary colors (for dark backgrounds)
   // When light=false: primary colors (for light backgrounds)
   const borderColor = light ? 'border-secondary' : 'border-primary'
   const borderColorDashed = light ? 'border-secondary/50' : 'border-primary/50'
-  const borderColorDashedHover = light
-    ? 'group-hover:border-secondary/80'
-    : 'group-hover:border-primary/80'
   const textColor = light ? 'text-secondary' : 'text-primary'
-  const bgHover = light
-    ? 'group-hover:bg-secondary/10'
-    : 'group-hover:bg-primary/10'
-  const handleClick = () => {
-    if (calendly) {
-      window.open('https://calendly.com/siennamodular ', '_blank')
-    } else {
-      const phone = '5491161182622'
-      const message = encodeURIComponent(
-        'Hola, Me gusataria recibir mas informarcion de SIENNA MODULAR.',
-      )
-      window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
-    }
-  }
+
   return (
-    <button
-      onClick={handleClick}
-      className={`relative px-8 py-3 group transition-all duration-300 hover:scale-105 ${className}`}>
+    <button className={`relative px-8 py-3 group transition-all duration-300 `}>
       {/* Main Dashed Border */}
       <div
-        className={`absolute inset-0 border border-dashed ${borderColorDashed} ${borderColorDashedHover} ${bgHover} pointer-events-none transition-all duration-300`}
+        className={`absolute inset-0 border border-dashed ${borderColorDashed} pointer-events-none`}
       />
 
       {/* Solid Corners */}
@@ -52,10 +34,12 @@ const ContactButton = ({ text, className = '', light = true, calendly }) => {
       />
 
       {/* Button Text */}
-      <span
+      <a
+        href='/SiennaBrochureCompleto.pdf'
+        download
         className={`font-Gotham-medium text-sm ${textColor} capitalize tracking-wide`}>
         {text}
-      </span>
+      </a>
     </button>
   )
 }

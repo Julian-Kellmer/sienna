@@ -24,10 +24,10 @@ const GlassCard = ({ numero, titulo, descripcion, foto, video }) => {
       <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent' />
 
       {/* Contenido */}
-      <div className='absolute inset-0 p-6 md:p-8 flex flex-col justify-between'>
+      <div className='absolute inset-0 py-6 px-4 flex flex-col justify-between'>
         {/* Número arriba a la izquierda - pequeño */}
         <div>
-          <span className='text-white/60 text-sm md:text-base font-Gotham-medium tracking-wider'>
+          <span className='text-white/60 bg-primary/30 backdrop-blur-sm p-2 rounded-lg text-sm md:text-base font-Gotham-medium tracking-wider'>
             {numero}
           </span>
         </div>

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const RollingNumber = ({
   number = 0,
+  suffix = '',
   containerClassName = '',
   itemHeightClassName = 'h-[6rem]',
   textClassName = 'text-[3.2rem] md:text-[3.8rem] font-bold text-secondary',
@@ -48,7 +49,7 @@ const RollingNumber = ({
           duration: duration,
           delay: index * delay,
           ease: 'ease-in-out',
-        }
+        },
       )
 
       scrollTriggers.push(tl.scrollTrigger)
@@ -65,11 +66,11 @@ const RollingNumber = ({
   return (
     <div
       ref={containerRef}
-      className={`flex ${containerClassName}`}>
+      className={`flex items-center ${containerClassName}`}>
       {finalDigits.map((digit, index) => (
         <div
           key={index}
-          className={`overflow-hidden w-full md:w-[full] ${itemHeightClassName}`}>
+          className={`overflow-hidden w-fit tracking-tight ${itemHeightClassName}`}>
           <div
             className='flex flex-col'
             ref={(el) => (boxesRef.current[index] = el)}>
@@ -83,6 +84,7 @@ const RollingNumber = ({
           </div>
         </div>
       ))}
+      {suffix && <span className={`${textClassName} ml-1`}>{suffix}</span>}
     </div>
   )
 }
