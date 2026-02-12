@@ -13,17 +13,52 @@ const ContactButton = ({ text, className = '', light = true, calendly }) => {
   const bgHover = light
     ? 'group-hover:bg-secondary/10'
     : 'group-hover:bg-primary/10'
-  const handleClick = () => {
+  // Inject Calendly assets if needed
+  React.useEffect(() => {
     if (calendly) {
-      window.open('https://calendly.com/siennamodular ', '_blank')
+      const head = document.head
+      const link = document.createElement('link')
+      link.href = 'https://assets.calendly.com/assets/external/widget.css'
+      link.rel = 'stylesheet'
+
+      const script = document.createElement('script')
+      script.src = 'https://assets.calendly.com/assets/external/widget.js'
+      script.async = true
+
+      if (
+        !document.querySelector(
+          'link[href="https://assets.calendly.com/assets/external/widget.css"]',
+        )
+      ) {
+        head.appendChild(link)
+      }
+      if (
+        !document.querySelector(
+          'script[src="https://assets.calendly.com/assets/external/widget.js"]',
+        )
+      ) {
+        document.body.appendChild(script)
+      }
+    }
+  }, [calendly])
+
+  const handleClick = (e) => {
+    if (calendly) {
+      e.preventDefault()
+      if (typeof window !== 'undefined' && window.Calendly) {
+        window.Calendly.initPopupWidget({
+          url: 'https://calendly.com/siennamodular/30min',
+        })
+      }
     } else {
-      const phone = '5491161182622'
+      const phone = '+5491161182622'
       const message = encodeURIComponent(
         'Hola, Me gusataria recibir mas informarcion de SIENNA MODULAR.',
       )
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
     }
   }
+
   return (
     <button
       onClick={handleClick}

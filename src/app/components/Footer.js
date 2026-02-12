@@ -14,19 +14,37 @@ const Footer = () => {
   const columns = [
     {
       title: 'Productos',
-      links: ['Modulos', 'Brochure', 'Galeria', 'Para desarrolladores'],
+      links: [
+        { label: 'Modulos', href: '#' },
+        { label: 'Brochure', href: '#' },
+        { label: 'Galeria', href: '#' },
+        { label: 'Para desarrolladores', href: '#' },
+      ],
     },
     {
       title: 'Nosotros',
-      links: ['Compañia', 'Beneficios'],
+      links: [
+        { label: 'Compañia', href: '#' },
+        { label: 'Beneficios', href: '#' },
+      ],
     },
     {
       title: 'Conoce más',
-      links: ['Contacto', 'Agendar reunión'],
+      links: [
+        { label: 'Contacto', href: '#contact' },
+        { label: 'Agendar reunión', href: 'https://calendly.com/' },
+      ],
     },
     {
       title: 'Social',
-      links: ['Instagram', 'Telefono', 'Correo'],
+      links: [
+        {
+          label: 'Instagram',
+          href: 'https://www.instagram.com/siennamodular/',
+        },
+        { label: '+54 9 11 6118-2622', href: 'tel:+5491161182622' },
+        { label: 'info@siennamodular.com.ar', href: 'mailto:info@siennamodular.com.ar' },
+      ],
     },
   ]
 
@@ -55,7 +73,7 @@ const Footer = () => {
                   Developed by{' '}
                   <a
                     className='underline hover:text-primary transition-colors'
-                    href='https://wa.me/5491123456789?text=Hola%20quiero%20hacer%20Mi%20pagina%20web'
+                    href='https://wa.me/+5491161182622?text=Hola%20quiero%20hacer%20Mi%20pagina%20web'
                     target='_blank'
                     rel='noopener noreferrer'>
                     Julian Kellmer
@@ -78,9 +96,17 @@ const Footer = () => {
                     {section.links.map((link, i) => (
                       <li key={i}>
                         <a
-                          href='#'
+                          href={link.href}
+                          target={
+                            link.href.startsWith('http') ? '_blank' : undefined
+                          }
+                          rel={
+                            link.href.startsWith('http')
+                              ? 'noopener noreferrer'
+                              : undefined
+                          }
                           className='text-sm text-black/70 hover:text-black transition-colors'>
-                          {link}
+                          {link.label}
                         </a>
                       </li>
                     ))}
@@ -94,6 +120,7 @@ const Footer = () => {
               <ContactButton
                 text='Agendar reunión'
                 light={false}
+                calendly={true}
               />
               <BrochureButton
                 text='Descargar Brochure'

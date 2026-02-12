@@ -32,7 +32,7 @@ export default function ProyectoIndividual({ proyecto }) {
   }, [])
 
   const whatsappMessage = `Hola! Estoy interesado en el Modelo SIENNA ${proyecto.nombre} (${proyecto.m2}m²). Me gustaría recibir más información.`
-  const whatsappLink = `https://wa.me/5491234567890?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/+5491161182622?text=${encodeURIComponent(
     whatsappMessage,
   )}`
 

@@ -3,6 +3,7 @@ import RollingNumber from '../components/Reusables/RollingNumber'
 import BrandsMarquee from '../components/Reusables/BrandsMarquee'
 import { CardNumber } from '../components/Reusables/CardNumeber'
 import { Associates } from './Asociates'
+import ContactButton from '../components/Reusables/ContactButton'
 
 const Metrics = () => {
   return (
@@ -16,6 +17,18 @@ const Metrics = () => {
             Producción propia para garantizar
             <span className='text-primary/50'> plazos y calidad</span>
           </h2>
+          <div className='flex gap-4 mt-4 self-start '>
+            <ContactButton
+              text='Agendar reunión'
+              light={false}
+              calendly={true}
+            />
+            <ContactButton
+              text='Contactanos'
+              light={false}
+              calendly={false}
+            />
+          </div>
         </div>
 
         {/* Top Right: Description - 7 columns */}
@@ -31,6 +44,7 @@ const Metrics = () => {
             ejecución y la entrega final, garantizamos consistencia,
             cumplimiento de plazos y terminaciones acordes a lo proyectado.
           </p>
+          
         </div>
 
         {/* Bottom: Associates Title */}
@@ -38,7 +52,7 @@ const Metrics = () => {
       <div className='flex flex-col md:flex-row md:flex-wrap gap-6 justify-end md:px-16 px-6'>
         <CardNumber
           title='Producción'
-          number={333}
+          number={78}
           description='Metros cuadrados fabricados anualmente'
           animationDelay='0.6s'
           suffix='M²+'
@@ -46,19 +60,19 @@ const Metrics = () => {
 
         <CardNumber
           title='Velocidad'
-          number={83}
-          description='Días promedio de entrega garantizados en cada proyecto'
+          number={90}
+          description='Días entrega Pactada'
           animationDelay='1.2s'
           suffix='días'
         />
 
-        <CardNumber
+        {/* <CardNumber
           title='Impact'
           number={95}
           suffix='%'
           description='Tasa de eficiencia en fabricación y gestión de calidad'
           animationDelay='1.8s'
-        />
+        /> */}
       </div>
       <div className='col-span-full  flex flex-col '>
         <Associates />
