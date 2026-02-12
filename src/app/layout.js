@@ -5,13 +5,13 @@ import Footer from './components/Footer'
 import LoadingPage from './sections/LoadingPage'
 import { icons } from 'lucide-react'
 
-const inter = Inter({
+const inter = Inter({ 
   variable: '--font-inter',
   subsets: ['latin'],
 })
 
 export const metadata = {
-  title: 'SIENNA modular',
+  title: 'Sienna Arquitectura Modular | Casas Modernas en Argentina',
   description: 'Constructora de Modulos ',
   icons: { icon: './LogoConFondo.svg' },
 }
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
       <body className={` ${inter.variable}  antialiased relative `}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

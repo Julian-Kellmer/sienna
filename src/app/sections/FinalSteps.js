@@ -13,7 +13,7 @@ const pasos = [
     numero: '02',
     titulo: 'Seña inicial del 5%',
     descripcion:
-      'Con una seña del 5%, comenzamos a trabajar en el proyecto con nuestro equipo de arquitectos. (Incluye diseño personalizado, asesoramiento técnico y definición de materiales) ⏳Duración estimada: 1 mes',
+      'Con una seña del 5%, comenzamos a trabajar en el proyecto con nuestro equipo de arquitectos. (Incluye diseño personalizado, asesoramiento técnico y definición de materiales)',
     foto: '/images/background.jpg',
     video: '/lastSteps/4.mp4',
   },
@@ -29,7 +29,7 @@ const pasos = [
     numero: '04',
     titulo: 'Firma del contrato y conexión con fábrica',
     descripcion:
-      'Una vez aprobado el proyecto, firmamos el contrato y comenzamos la producción en planta. Se completa el anticipo hasta el 50% con un nuevo pago del 45%. ⏳Duración estimada: 1 mes',
+      'Una vez aprobado el proyecto, firmamos el contrato y comenzamos la producción en planta. Se completa el anticipo hasta el 50% con un nuevo pago del 45%.',
     foto: '/lastSteps/2.jpg',
   },
   {

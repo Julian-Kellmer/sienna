@@ -67,13 +67,13 @@ const WhyUs = () => {
             <p className='font-Gotham-light text-mobile-body text-primary/80'>
               En SIENNA nuestra prioridad siempre sos vos.
             </p>
-            <div className='flex'>
+            {/* <div className='flex'>
               <ContactButton
                 light={false}
                 calendly={true}
                 text='Agenda tu reunión'
               />
-            </div>
+            </div> */}
           </div>
         </div>
 

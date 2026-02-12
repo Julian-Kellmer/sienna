@@ -52,32 +52,25 @@ const Header = () => {
             <nav>
               <ul className='flex gap-8 text-black font-Gotham-book text-sm'>
                 <li>
-                  <a
+                  <Link
                     href='/'
                     onClick={(e) => handleNavScroll(e, 'inicio')}>
                     Inicio
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href='/'
                     onClick={(e) => handleNavScroll(e, 'nosotros')}>
                     Nosotros
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href='/'
                     onClick={(e) => handleNavScroll(e, 'proyectos')}>
                     Proyectos
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='/contact'
-                    onClick={(e) => handleNavScroll(e, 'contact')}>
-                    Kontakt
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -132,44 +125,44 @@ const Header = () => {
               <nav>
                 <ul className='flex flex-col gap-6 text-lg font-light text-secondary'>
                   <li>
-                    <a
+                    <Link
                       href='#proyectos'
                       onClick={(e) => {
                         handleNavScroll(e, 'proyectos')
                         setMenuOpen(false)
                       }}>
                       Proyectos
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href='#nosotros'
                       onClick={(e) => {
                         handleNavScroll(e, 'nosotros')
                         setMenuOpen(false)
                       }}>
                       Sobre nosotros
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href='#pasos'
                       onClick={(e) => {
                         handleNavScroll(e, 'pasos')
                         setMenuOpen(false)
                       }}>
                       Pasos
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href='#contact'
                       onClick={(e) => {
                         handleNavScroll(e, 'contact')
                         setMenuOpen(false)
                       }}>
                       Contacto
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

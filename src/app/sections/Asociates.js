@@ -16,7 +16,7 @@ const brands2 = [
 ]
 export const Associates = () => {
   return (
-    <section className='layout-wrap flex-col w-full min-h-screen relative py-12 md:pt-2 flex justify-center'>
+    <section className='layout-wrap flex-col w-full min-h-[70vh] md:min-h-screen relative  md:pt-2 flex justify-center'>
       <div className='layout-grid h-full gap-y-12 md:gap-y-16 '>
         <div className='col-span-4 md:col-span-full  flex flex-col justify-end md:p-12 min-h-[20vh] md:min-h-[40vh] mt-24'>
           <h3 className=' text-mobile-title self-center text-[1.5em] font-bold tracking-tighter leading-none'>

@@ -1,13 +1,21 @@
 'use client'
-import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import proyectos from '../mockdata/proyectos'
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import BrochureButton from '../components/Reusables/BrochureButton'
+import proyectos from '../mockdata/proyectos'
+import { cld } from '../utils/cloudinary' // <-- ajustá si tu path es otro
+
+const FILTERS = [
+  { label: 'Ver todos', value: 'all' },
+  { label: 'Viviendas', value: 'casa' },
+  { label: 'Comerciales', value: 'comercial' },
+]
 
 const Proyect2 = () => {
-  const [proyectosConDims, setProyectosConDims] = useState([])
   const carouselRef = useRef(null)
 
   // Embla hooks
@@ -23,6 +31,7 @@ const Proyect2 = () => {
   const [desktopCanScrollNext, setDesktopCanScrollNext] = useState(true)
 
   const [device, setDevice] = useState('desktop')
+  const [filter, setFilter] = useState('all')
 
   // Detectar dispositivo
   useEffect(() => {
@@ -33,50 +42,16 @@ const Proyect2 = () => {
       else setDevice('desktop')
     }
 
-    handleResize() // detecta al cargar
+    handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Obtener dimensiones de imágenes
-  const getImgSizes = (url) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image()
-      img.onload = () =>
-        resolve({ width: img.naturalWidth, height: img.naturalHeight })
-      img.onerror = () => reject(`Error cargando imagen: ${url}`)
-      img.src = url
-    })
-  }
-
-  const buildImagesArray = async (proyectos) => {
-    const resultado = []
-    for (const proyecto of proyectos) {
-      if (!proyecto.images?.length) continue
-      try {
-        const firstUrl = proyecto.images[0]
-        const dims = await getImgSizes(firstUrl)
-        resultado.push({
-          id: proyecto.id,
-          images: proyecto.images,
-          nombre: proyecto.nombre,
-          m2: proyecto.m2,
-          ...dims,
-        })
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    console.log(resultado)
-    return resultado
-  }
-
-  useEffect(() => {
-    ;(async () => {
-      const imgsConDims = await buildImagesArray(proyectos)
-      setProyectosConDims(imgsConDims)
-    })()
-  }, [])
+  const proyectosFiltrados = useMemo(() => {
+    const list = proyectos.filter((p) => p.images?.length)
+    if (filter === 'all') return list
+    return list.filter((p) => p.segmento === filter)
+  }, [filter])
 
   // Embla navigation setup
   const onSelect = useCallback(() => {
@@ -129,7 +104,7 @@ const Proyect2 = () => {
       handleDesktopScroll()
       return () => carousel.removeEventListener('scroll', handleDesktopScroll)
     }
-  }, [proyectosConDims])
+  }, [proyectosFiltrados])
 
   // Drag con inercia para desktop/tablet
   const isDragging = useRef(false)
@@ -163,7 +138,6 @@ const Proyect2 = () => {
     const walk = x - startX.current
     carouselRef.current.scrollLeft = scrollLeft.current - walk
 
-    // calcular velocidad para inercia
     velocity.current = e.pageX - lastX.current
     lastX.current = e.pageX
   }
@@ -179,45 +153,43 @@ const Proyect2 = () => {
     frame.current = requestAnimationFrame(step)
   }
 
-  const MAX_WIDTH = 400
-  const MAX_WIDTH_MOBILE = 280
-  const MAX_HEIGHT_MOBILE = 400
+  // Tamaños / ratios consistentes (sin medir imágenes)
+  const CARD_DESKTOP_W = 520
+  const CARD_DESKTOP_H = 360
+  const CARD_MOBILE_W = 280
+  const CARD_MOBILE_H = 360
 
   return (
-    <section id='proyectos'>
-      <div className='flex flex-col'>
-        {/* Títulos y Filtros */}
-        <div className='layout-wrap mb-12'>
-          <div className='layout-grid'>
-            <div className='col-span-4 md:col-start-2 md:col-span-10 pt-16 pb-8 gap-8 flex flex-col '>
-              <h2 className='title font-bold tracking-tight text-primary leading-none text-mobile-title md:text-tablet-title lg:text-[3em]'>
-                Nuestros últimos{' '}
-                <span className='text-primary/50'>Proyectos</span>
+    <section id="proyectos">
+      <div className="flex flex-col">
+        {/* Títulos */}
+        <div className="layout-wrap mb-12">
+          <div className="layout-grid">
+            <div className="col-span-4 md:col-start-2 md:col-span-10 pt-16 pb-8 gap-8 flex flex-col">
+              <h2 className="title font-bold tracking-tight text-primary leading-none text-mobile-title md:text-tablet-title lg:text-[3em]">
+                Nuestros últimos <span className="text-primary/50">Proyectos</span>
               </h2>
-              <div className='flex justify-start'>
-                <BrochureButton
-                  text='Descarga nuestro brochure'
-                  light={false}
-                />
+              <div className="flex justify-start">
+                <BrochureButton text="Descarga nuestro brochure" light={false} />
               </div>
             </div>
 
             {/* Filtros */}
-            <div className='col-span-4 md:col-start-2 md:col-span-10 pb-8'>
-              <div className='flex flex-wrap gap-4'>
-                {['Ver todos', 'Viviendas', 'Oficinas', 'Turismo'].map(
-                  (cat) => (
-                    <button
-                      key={cat}
-                      className={`px-6 py-2 rounded-full border border-black/10 text-sm font-Gotham-book hover:bg-black/5 transition-colors ${
-                        cat === 'Ver todos'
-                          ? 'bg-primary text-white hover:bg-primary/90'
-                          : 'bg-transparent text-primary'
-                      }`}>
-                      {cat}
-                    </button>
-                  ),
-                )}
+            <div className="col-span-4 md:col-start-2 md:col-span-10 pb-8">
+              <div className="flex flex-wrap gap-4">
+                {FILTERS.map((f) => (
+                  <button
+                    key={f.value}
+                    onClick={() => setFilter(f.value)}
+                    className={`px-6 py-2 rounded-full border border-black/10 text-sm font-Gotham-book hover:bg-black/5 transition-colors ${
+                      filter === f.value
+                        ? 'bg-primary text-white hover:bg-primary/90'
+                        : 'bg-transparent text-primary'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -226,42 +198,43 @@ const Proyect2 = () => {
         {/* Carrusel */}
         {device === 'mobile' ? (
           // Mobile: Embla Carousel
-          <div className='relative w-full'>
-            <div
-              className='overflow-hidden'
-              ref={emblaRef}>
-              <div className='flex gap-4 py-8 pl-4'>
-                {proyectosConDims.map((project) => {
-                  const scaleX = MAX_WIDTH_MOBILE / project.width
-                  const scaleY = MAX_HEIGHT_MOBILE / project.height
-                  const width = project.width * scaleX
-                  const height = project.height * scaleY
+          <div className="relative w-full">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-4 py-8 pl-4">
+                {proyectosFiltrados.map((project, idx) => {
+                  const srcId = project.images?.[0]
+                  const src = cld(srcId, { w: 900, crop: 'fill' })
+
                   return (
                     <div
                       key={project.id}
-                      className='flex-[0_0_auto] flex flex-col gap-4 mx-2 group'
-                      style={{ width }}>
-                      <a
-                        href={`/proyectos/${project.id}`}
-                        className='block'>
+                      className="flex-[0_0_auto] flex flex-col gap-4 mx-2 group"
+                      style={{ width: CARD_MOBILE_W }}
+                    >
+                      <Link href={`/proyectos/${project.id}`} className="block">
                         <div
-                          style={{ height }}
-                          className='rounded-lg overflow-hidden relative shadow-md cursor-pointer group-hover:shadow-2xl transition-all duration-300'>
-                          <img
-                            src={project.images?.[0] || '/casas/S205/1.png'}
+                          style={{ height: CARD_MOBILE_H }}
+                          className="rounded-lg overflow-hidden relative shadow-md cursor-pointer group-hover:shadow-2xl transition-all duration-300"
+                        >
+                          <Image
+                            src={src}
                             alt={`Proyecto ${project.id}`}
-                            className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                            fill
+                            sizes="(max-width: 768px) 80vw, 320px"
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            priority={idx === 0}
+                            unoptimized
                           />
                         </div>
-                      </a>
+                      </Link>
 
-                      <div className='flex items-center justify-between px-1'>
+                      <div className="flex items-center justify-between px-1">
                         <div>
-                          <h2 className='font-Gotham-medium text-2xl text-primary font-bold'>
+                          <h2 className="font-Gotham-medium text-2xl text-primary font-bold">
                             Modelo SIENNA {project.nombre}
                           </h2>
-                          <p className='text-primary/60 font-Gotham-book text-sm uppercase tracking-wider'>
-                            {project.m2}M²
+                          <p className="text-primary/60 font-Gotham-book text-sm uppercase tracking-wider">
+                            {project.m2 ? `${project.m2}M²` : ''}
                           </p>
                         </div>
                       </div>
@@ -272,7 +245,7 @@ const Proyect2 = () => {
             </div>
 
             {/* Mobile Navigation Buttons */}
-            <div className='absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none">
               <button
                 onClick={scrollPrev}
                 disabled={!canScrollPrev}
@@ -280,7 +253,8 @@ const Proyect2 = () => {
                   canScrollPrev
                     ? 'opacity-100 hover:bg-primary hover:text-white'
                     : 'opacity-30 cursor-not-allowed'
-                }`}>
+                }`}
+              >
                 <ChevronLeft size={24} />
               </button>
               <button
@@ -290,70 +264,60 @@ const Proyect2 = () => {
                   canScrollNext
                     ? 'opacity-100 hover:bg-primary hover:text-white'
                     : 'opacity-30 cursor-not-allowed'
-                }`}>
+                }`}
+              >
                 <ChevronRight size={24} />
               </button>
             </div>
           </div>
         ) : (
           // Desktop/Tablet: carrusel drag
-          <div className='relative'>
+          <div className="relative">
             <div
               ref={carouselRef}
-              className='carruselContainer flex items-end gap-24 overflow-x-hidden cursor-grab'
+              className="carruselContainer flex items-end gap-24 overflow-x-hidden cursor-grab"
               onMouseDown={onMouseDown}
               onMouseLeave={onMouseLeave}
               onMouseUp={onMouseUp}
               onMouseMove={onMouseMove}
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              {/* Ocultar scrollbar en Chrome/Safari */}
-              <style>
-                {`
-                  .carruselContainer::-webkit-scrollbar {
-                    display: none;
-                  }
-                `}
-              </style>
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <style>{`.carruselContainer::-webkit-scrollbar { display: none; }`}</style>
 
-              {proyectosConDims.map((project) => {
-                const scale = MAX_WIDTH / project.height
-                const width = project.width * scale
-                const height = project.height * scale
+              {proyectosFiltrados.map((project) => {
+                const srcId = project.images?.[0]
+                const src = cld(srcId, { w: 1400, crop: 'fill' })
+
                 return (
                   <div
                     key={project.id}
-                    className='px-4 py-8 flex flex-col items-start flex-shrink-0 gap-4 group'>
-                    <a
-                      href={`/proyectos/${project.id}`}
-                      className='block overflow-hidden'>
+                    className="px-4 py-8 flex flex-col items-start flex-shrink-0 gap-4 group"
+                    style={{ width: CARD_DESKTOP_W + 32 }} // padding/aire
+                  >
+                    <Link href={`/proyectos/${project.id}`} className="block overflow-hidden">
                       <div
-                        style={{ width, height }}
-                        className='overflow-hidden cursor-pointer shadow-lg group-hover:shadow-2xl transition-all duration-300'>
-                        <img
-                          src={project.images?.[0] || '/casas/S205/1.png'}
+                        style={{ width: CARD_DESKTOP_W, height: CARD_DESKTOP_H }}
+                        className="overflow-hidden cursor-pointer shadow-lg group-hover:shadow-2xl transition-all duration-300 relative"
+                      >
+                        <Image
+                          src={src}
                           alt={`Proyecto ${project.id}`}
-                          className='w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500'
+                          fill
+                          sizes="(max-width: 1024px) 60vw, 520px"
+                          className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                         />
                       </div>
-                    </a>
+                    </Link>
 
-                    <div className='w-full flex items-center justify-between mt-2'>
+                    <div className="w-full flex items-center justify-between mt-2">
                       <div>
-                        <h2 className='font-Gotham-medium text-2xl text-primary font-bold'>
+                        <h2 className="font-Gotham-medium text-2xl text-primary font-bold">
                           Modelo SIENNA {project.nombre}
                         </h2>
-                        <p className='text-primary/60 font-Gotham-book text-sm uppercase tracking-wider'>
-                          {project.m2}M²
+                        <p className="text-primary/60 font-Gotham-book text-sm uppercase tracking-wider">
+                          {project.m2 ? `${project.m2}M²` : ''}
                         </p>
                       </div>
-                      {/* <a
-                        href={`/proyectos/${project.id}`}
-                        className='group flex items-center justify-center w-14 h-8 border border-black/20 rounded-full hover:bg-primary hover:text-white hover:border-transparent transition-all duration-300'>
-                        <ArrowRight
-                          size={20}
-                          className='text-current transition-colors'
-                        />
-                      </a> */}
                     </div>
                   </div>
                 )
@@ -361,7 +325,7 @@ const Proyect2 = () => {
             </div>
 
             {/* Desktop Navigation Buttons */}
-            <div className='absolute top-1/2 -translate-y-1/2 left-8 right-8 flex justify-between pointer-events-none'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-8 right-8 flex justify-between pointer-events-none">
               <button
                 onClick={scrollDesktopLeft}
                 disabled={!desktopCanScrollPrev}
@@ -369,7 +333,8 @@ const Proyect2 = () => {
                   desktopCanScrollPrev
                     ? 'opacity-100 hover:bg-primary hover:text-white hover:scale-110'
                     : 'opacity-30 cursor-not-allowed'
-                }`}>
+                }`}
+              >
                 <ChevronLeft size={28} />
               </button>
               <button
@@ -379,7 +344,8 @@ const Proyect2 = () => {
                   desktopCanScrollNext
                     ? 'opacity-100 hover:bg-primary hover:text-white hover:scale-110'
                     : 'opacity-30 cursor-not-allowed'
-                }`}>
+                }`}
+              >
                 <ChevronRight size={28} />
               </button>
             </div>
