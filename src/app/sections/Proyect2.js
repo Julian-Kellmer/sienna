@@ -214,7 +214,7 @@ const Proyect2 = () => {
                       <Link href={`/proyectos/${project.id}`} className="block">
                         <div
                           style={{ height: CARD_MOBILE_H }}
-                          className="rounded-lg overflow-hidden relative shadow-md cursor-pointer group-hover:shadow-2xl transition-all duration-300"
+                          className=" overflow-hidden relative shadow-md cursor-pointer group-hover:shadow-2xl transition-all duration-300"
                         >
                           <Image
                             src={src}
@@ -233,9 +233,7 @@ const Proyect2 = () => {
                           <h2 className="font-Gotham-medium text-2xl text-primary font-bold">
                             Modelo SIENNA {project.nombre}
                           </h2>
-                          <p className="text-primary/60 font-Gotham-book text-sm uppercase tracking-wider">
-                            {project.m2 ? `${project.m2}M²` : ''}
-                          </p>
+                          
                         </div>
                       </div>
                     </div>
@@ -314,9 +312,7 @@ const Proyect2 = () => {
                         <h2 className="font-Gotham-medium text-2xl text-primary font-bold">
                           Modelo SIENNA {project.nombre}
                         </h2>
-                        <p className="text-primary/60 font-Gotham-book text-sm uppercase tracking-wider">
-                          {project.m2 ? `${project.m2}M²` : ''}
-                        </p>
+
                       </div>
                     </div>
                   </div>

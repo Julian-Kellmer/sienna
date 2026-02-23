@@ -17,7 +17,7 @@ const Metrics = () => {
             Producción propia para garantizar
             <span className='text-primary/50'> plazos y calidad</span>
           </h2>
-          <div className='flex gap-4 mt-4 self-start '>
+          <div className='flex gap-4 mt-4 self-start'>
             <ContactButton
               text='Agendar reunión'
               light={false}

@@ -121,7 +121,7 @@ const WhyUs = () => {
                             alt={items.icon}
                           />
                         </div>
-                        <h2 className='px-4 font-bold  leading-none sm:text-tablet-title lg:text-[2rem] text-[1.6rem] '>
+                        <h2 className='px-4 font-bold leading-none  lg:text-[rem] text-[1.6rem] '>
                           {items.title}
                         </h2>
                       </div>

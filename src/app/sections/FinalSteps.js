@@ -96,7 +96,7 @@ const FinalSteps = () => {
 
         {/* Texto final donde estaría el item 8 */}
         <div className='w-full flex items-center justify-center p-8 md:p-12 '>
-          <div className='text-center'>
+          <div className='text-left'>
             <h3 className='text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight'>
               Con entrega llave en mano, tu proyecto está listo para habitar
             </h3>

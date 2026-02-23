@@ -61,7 +61,7 @@ const WhyUs = () => {
           className='col-span-4 md:col-start-2 md:col-span-5 flex flex-col justify-center relative'>
           <div className='flex flex-col gap-6 md:gap-8 pr-4 md:pr-12'>
             <h1 className='tracking-tighter leading-none text-mobile-title sm:text-tablet-title lg:text-[3em] font-bold text-primary'>
-              Porque elegirnos es la <br />
+              Por qué elegirnos es la <br />
               <span className='text-primary/75'> mejor opción</span>
             </h1>
             <p className='font-Gotham-light text-mobile-body text-primary/80'>
@@ -87,11 +87,11 @@ const WhyUs = () => {
               key={index}
               className='flex flex-col gap-4 border-b border-black/10 last:border-b-0 justify-start py-4'>
               <img
-                className='w-8 h-8 md:w-12 md:h-12'
+                className=' w-8 h-8 md:w-12 md:h-12 '
                 src={item.icon}
                 alt=''
               />
-              <h3 className='text-2xl md:text-2xl font-bold font-Primary text-primary'>
+              <h3 className='text-xl md:text-2xl font-bold font-Primary text-primary'>
                 {item.title}
               </h3>
               <p className='text-sm md:text-base font-Gotham-light text-primary/80 leading-relaxed'>
