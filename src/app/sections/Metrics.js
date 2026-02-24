@@ -53,9 +53,9 @@ const Metrics = () => {
         <CardNumber
           title='Producción'
           number={78}
-          description='Metros cuadrados fabricados anualmente'
+          description='Proyectos realizados'
           animationDelay='0.6s'
-          suffix='M²+'
+          suffix=','
         />
 
         <CardNumber
