@@ -73,7 +73,7 @@ const Footer = () => {
                   Developed by{' '}
                   <a
                     className='underline hover:text-primary transition-colors'
-                    href='https://wa.me/+5491161182622?text=Hola%20quiero%20hacer%20Mi%20pagina%20web'
+                    href='https://wa.me/+5491166161929?text=Hola%20quiero%20hacer%20Mi%20pagina%20web'
                     target='_blank'
                     rel='noopener noreferrer'>
                     Julian Kellmer
